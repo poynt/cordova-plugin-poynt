@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="cordova-plugin-poynt" version="0.0.1">
+	<name>Poynt</name>
+	<description>PoyntOS plugin</description>
+	<license>Apache 2.0</license>
+	<keywords>poynt</keywords>
+	<js-module src="www/PoyntPlugin.js" name="Poynt">
+		<clobbers target="window.Poynt" />
+	</js-module>
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Poynt">
+				<param name="android-package" value="co.poynt.cordova.plugin.Poynt" />
+			</feature>
+		</config-file>
+		<source-file src="src/android/Poynt.java" target-dir="src/co/poynt/cordova/plugin" />
+		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+	</platform>
+</plugin>

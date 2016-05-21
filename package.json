@@ -1,0 +1,10 @@
+{
+    "name":"cordova-plugin-poynt",
+    "version":"1.0.0",
+    "description":"Simple plugin to work with Poynt payment fragment",
+    "keywords":[
+        "poynt"
+    ],
+    "author":"Poynt Developer Support <devsupport@poynt.com> (https://poynt.com)",
+    "license":"Apache 2"
+}
