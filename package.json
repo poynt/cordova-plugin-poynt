@@ -6,5 +6,10 @@
         "poynt"
     ],
     "author":"Poynt Developer Support <devsupport@poynt.com> (https://poynt.com)",
-    "license":"Apache 2"
+    "license":"Apache 2",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/poynt/cordova-plugin-poynt.git"
+    },
+    "bugs":"https://github.com/poynt/cordova-plugin-poynt/issues"
 }
