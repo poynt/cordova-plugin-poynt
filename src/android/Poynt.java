@@ -89,11 +89,12 @@ public class Poynt extends CordovaPlugin{
                 this.cordova.startActivityForResult(this, collectPaymentIntent, COLLECT_PAYMENT_REQUEST);
             } catch (ActivityNotFoundException ex) {
                 Log.e(TAG, "Poynt Payment Activity not found - did you install PoyntServices?", ex);
-                //TODO return status to cordova
+                this.callbackContext.error(getErrorString());
             }
         }
         return true;
     }
+
 
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         if (requestCode == COLLECT_PAYMENT_REQUEST) {
@@ -113,11 +114,17 @@ public class Poynt extends CordovaPlugin{
                     //TODO no payment was returned. Notify callback
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                callbackContext.error(OPERATION_CANCELLED_ERROR);
+                callbackContext.error(getErrorString());
                 return;
             }
 
-            this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, UNKNOWN_ERROR));
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, UNKNOWN_ERROR));
         }
+    }
+
+    private String getErrorString(){
+        return "{\n" + 
+               "    \"status\": \"TRANSACTION_CANCELLED\"\n" +
+               "}";
     }
 }
