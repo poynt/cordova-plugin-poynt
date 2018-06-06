@@ -188,8 +188,7 @@ public class Poynt extends CordovaPlugin  {
          
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            String tosend=getGenString("BIND");
-            callbackContext.success(tosend); 
+             
             secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
             businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
         }
