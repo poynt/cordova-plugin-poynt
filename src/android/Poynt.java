@@ -183,18 +183,6 @@ public class Poynt extends CordovaPlugin implements ServiceConnection {
     private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
     
-    /*public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-        super.initialize(cordova, webView);
-         
-        Context applicationContext = cordova.getActivity().getApplicationContext();
-        applicationContext.bindService(
-                                       new Intent(cordova.getActivity(),
-                                                  MetaWearBleService.class),
-                                       this, Context.BIND_AUTO_CREATE
-                                       );
-        Log.v(TAG,"Init Device");
-    }
-    /*
     private final ServiceConnection genConnection = new ServiceConnection() {
          
          
@@ -212,21 +200,7 @@ public class Poynt extends CordovaPlugin implements ServiceConnection {
             businessService = null;
         }
     };
-    */
-       @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-             
-            secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
-            businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-             
-            secondScreenService = null;
-            businessService = null;
-        }
-    
+      
    private void showConfirmation(String message) {
         try {
             Bundle options = new Bundle();
