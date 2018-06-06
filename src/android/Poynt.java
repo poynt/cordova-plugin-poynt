@@ -209,7 +209,7 @@ public class Poynt extends CordovaPlugin{
     }
  
     public void doTest(final CallbackContext callbackContext) {
-        String tosend=getGenString("YES");
+         
         callbackContext.error(getErrorString());
     }
     
