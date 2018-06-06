@@ -44,6 +44,7 @@ import android.util.Base64;
 /* ale */
 
 /* ale2 */
+import co.poynt.os.model.PoyntError;
 import co.poynt.api.model.Business;
 import co.poynt.api.model.Phone;
 import co.poynt.api.model.Store;
