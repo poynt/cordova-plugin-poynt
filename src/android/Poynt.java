@@ -180,9 +180,9 @@ public class Poynt extends CordovaPlugin{
         }
     }
  
-    public void collectSignature(final CallbackContext callbackContext) {
+    public void collectSignature() {
         try {
-           
+            final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
             options.putString(Intents.EXTRA_TITLE, "autograph please");
             options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I agree");
@@ -197,7 +197,7 @@ public class Poynt extends CordovaPlugin{
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
                       String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT); 
                       String tosend=getGenString(encoded);
-                      callbackContext.error(tosend);  
+                      cbk.success(tosend);  
                     }
                 }
 
@@ -205,13 +205,13 @@ public class Poynt extends CordovaPlugin{
         } catch (RemoteException e) {
             e.printStackTrace();
             String tosend=getGenString("ERROR");
-            callbackContext.error(tosend);
+            this.callbackContext.error(tosend);
         }
     }
  
     public void doTest() {
          
-        this.callbackContext.error(getErrorString());
+        this.callbackContext.success(getGenString("CIAO!"));
     }
     
     public void showCollectAgreement() {
@@ -245,7 +245,7 @@ public class Poynt extends CordovaPlugin{
                             showConfirmation("Yey!");
                             //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
                             String tosend=getGenString("YES");
-                            cbk.error(tosend);
+                            cbk.success(tosend);
                         }
 
                     });
