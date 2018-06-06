@@ -45,7 +45,7 @@ import co.poynt.os.services.v2.IPoyntActionButtonListener;
 public class Poynt extends CordovaPlugin{
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
-
+    private static final String LAUNCH_ASKCONF="launchAskConf";
 
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
@@ -104,6 +104,9 @@ public class Poynt extends CordovaPlugin{
                 Log.e(TAG, "Poynt Payment Activity not found - did you install PoyntServices?", ex);
                 this.callbackContext.error(getErrorString());
             }
+        }
+        else if (LAUNCH_ASKCONF.equals(action)) {
+            showCollectAgreement(callbackContext);
         }
         return true;
     }
