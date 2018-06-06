@@ -335,4 +335,19 @@ public class Poynt extends CordovaPlugin implements ServiceConnection {
     
     
     /*  */
+    
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+             
+             String tosend=getGenString("SERVICE BOND");
+             this.callbackContext.success(tosend);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+             
+             String tosend=getGenString("SERVICE UNBOND");
+             this.callbackContext.success(tosend);
+        }
+    
 }
