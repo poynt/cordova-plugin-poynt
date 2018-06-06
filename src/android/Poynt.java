@@ -169,7 +169,7 @@ public class Poynt extends CordovaPlugin{
         }
     }
  
-    public void collectSignature() {
+    public void collectSignature(final CallbackContext callbackContext) {
         try {
            
             Bundle options = new Bundle();
@@ -182,13 +182,17 @@ public class Poynt extends CordovaPlugin{
                     showConfirmation("Thanks for the beautiful signature!");
                     if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
-                      
+                      bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                      byte[] byteArray = byteArrayOutputStream .toByteArray();
+                      String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);  
+                      callbackContext.error(encoded);  
                     }
                 }
 
             });
         } catch (RemoteException e) {
             e.printStackTrace();
+            callbackContext.error("ERROR");
         }
     }
  
