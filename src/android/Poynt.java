@@ -166,7 +166,7 @@ public class Poynt extends CordovaPlugin{
     
     private IPoyntSecondScreenService secondScreenService;
     private final ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
-        this.stato=0;
+         
          
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
