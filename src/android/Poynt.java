@@ -184,11 +184,12 @@ public class Poynt extends CordovaPlugin implements ServiceConnection {
     private IPoyntSecondScreenService secondScreenService;
     
     private final ServiceConnection genConnection = new ServiceConnection() {
-        private final CallbackContext cbk=this.callbackContext; 
+         
          
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-             
+            String tosend=getGenString("BIND");
+            callbackContext.success(tosend); 
             secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
             businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
         }
