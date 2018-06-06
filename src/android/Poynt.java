@@ -27,7 +27,7 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
+import co.poynt.os.search.SearchSuggestionListener;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
