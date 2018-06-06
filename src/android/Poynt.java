@@ -209,17 +209,20 @@ public class Poynt extends CordovaPlugin{
                         public void onLeftButtonClicked() throws RemoteException {
                             showConfirmation("Why not ?");
                             //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
+                            this.callbackContext.error("NO");
                         }
 
                         @Override
                         public void onRightButtonClicked() throws RemoteException {
                             showConfirmation("Yey!");
                             //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
+                            callbackContext.error("YES");
                         }
 
                     });
         } catch (RemoteException e) {
             e.printStackTrace();
+            callbackContext.error("ERROR");
         }
     }
  
