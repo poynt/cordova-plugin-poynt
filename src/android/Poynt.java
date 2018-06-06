@@ -27,8 +27,7 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import co.poynt.os.services.v2.IPoyntSecondScreenService;
-import co.poynt.os.services.v2.IPoyntSignatureListener;
+import co.poynt.os.services.v1;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
