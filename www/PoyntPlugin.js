@@ -12,6 +12,13 @@ var Poynt = {
 				"amount": amount, 
 				"referenceId": referenceId
 			}]);
+	},
+	launchAskConf: function (successCallback, errorCallback){
+		cordova.exec(successCallback, 
+			errorCallback, 
+			'Poynt', 
+			'launchAskConf', 
+			[]);
 	}
 }
 
