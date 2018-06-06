@@ -180,21 +180,24 @@ public class Poynt extends CordovaPlugin{
     }
     
      
-    
+    private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
-    private final ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
+    
+    private final ServiceConnection genConnection = new ServiceConnection() {
          
          
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
              
             secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
+            businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
         }
 
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
              
             secondScreenService = null;
+            businessService = null;
         }
     };
     
@@ -298,19 +301,8 @@ public class Poynt extends CordovaPlugin{
     
     /* ALE2 */
     
-    private IPoyntBusinessService businessService;
-    private ServiceConnection bizServiceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            
-            businessService = IPoyntBusinessService.Stub.asInterface(service);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            businessService=null;
-        }
-    };
+    
+     
     
      public void showInfo() {
         
