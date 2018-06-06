@@ -83,8 +83,9 @@ public class Poynt extends CordovaPlugin{
         //TODO add different actions, the one below shoud be "charge"
         this.callbackContext = callbackContext;
         this.executeArgs = args;
-        JSONObject arg_object = args.getJSONObject(0);
+        
         if (LAUNCH_PAYMENT.equals(action)) {
+            JSONObject arg_object = args.getJSONObject(0);
             Long amount = arg_object.getLong("amount");
             String referenceId = arg_object.getString("referenceId");
             String currencyCode = NumberFormat.getCurrencyInstance().getCurrency().getCurrencyCode();
@@ -108,7 +109,7 @@ public class Poynt extends CordovaPlugin{
             }
         }
         else if (LAUNCH_ASKCONF.equals(action)) {
-            showCollectAgreement(callbackContext);
+            showCollectAgreement();
         }
         else if (LAUNCH_TEST.equals(action)) {
             doTest();
@@ -135,7 +136,7 @@ public class Poynt extends CordovaPlugin{
                     //TODO no payment was returned. Notify callback
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                callbackContext.error(getErrorString());
+                this.callbackContext.error(getErrorString());
                 return;
             }
 
@@ -213,7 +214,7 @@ public class Poynt extends CordovaPlugin{
         this.callbackContext.error(getErrorString());
     }
     
-    public void showCollectAgreement(final CallbackContext callbackContext) {
+    public void showCollectAgreement() {
         try {
             Bundle options = new Bundle();
             options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
@@ -235,7 +236,7 @@ public class Poynt extends CordovaPlugin{
                             showConfirmation("Why not ?");
                             //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
                             String tosend=getGenString("NO");
-                            callbackContext.error(tosend);
+                            this.callbackContext.error(tosend);
                         }
 
                         @Override
@@ -243,14 +244,14 @@ public class Poynt extends CordovaPlugin{
                             showConfirmation("Yey!");
                             //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
                             String tosend=getGenString("YES");
-                            callbackContext.error(tosend);
+                            this.callbackContext.error(tosend);
                         }
 
                     });
         } catch (RemoteException e) {
             e.printStackTrace();
             String tosend=getGenString("ERROR");
-            callbackContext.error(tosend);
+            this.callbackContext.error(tosend);
         }
     }
  
