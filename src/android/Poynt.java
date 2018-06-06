@@ -179,10 +179,10 @@ public class Poynt extends CordovaPlugin{
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
                     showConfirmation("Thanks for the beautiful signature!");
-                    /*if (bitmap != null){
+                    if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
                       
-                    }*/
+                    }
                 }
 
             });
