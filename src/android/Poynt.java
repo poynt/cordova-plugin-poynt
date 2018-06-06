@@ -47,7 +47,8 @@ public class Poynt extends CordovaPlugin{
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
     private static final String LAUNCH_ASKCONF="launchAskConf";
-
+    private static final String LAUNCH_TEST="launchTest";
+    
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
 
@@ -108,6 +109,9 @@ public class Poynt extends CordovaPlugin{
         }
         else if (LAUNCH_ASKCONF.equals(action)) {
             showCollectAgreement(callbackContext);
+        }
+        else if (LAUNCH_TEST.equals(action)) {
+            doTest(callbackContext);
         }
         return true;
     }
@@ -196,7 +200,10 @@ public class Poynt extends CordovaPlugin{
         }
     }
  
- 
+    public void doTest(final CallbackContext callbackContext) {
+        callbackContext.error("YES");
+    }
+    
     public void showCollectAgreement(final CallbackContext callbackContext) {
         try {
             Bundle options = new Bundle();
