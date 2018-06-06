@@ -129,4 +129,21 @@ public class Poynt extends CordovaPlugin{
                "    \"status\": \"TRANSACTION_CANCELLED\"\n" +
                "}";
     }
+    
+    /* ALE */
+    
+    private final IPoyntSecondScreenService secondScreenService;
+    private ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            secondScreenService = null;
+        }
+    };
+    
+    /* ALE */
 }
