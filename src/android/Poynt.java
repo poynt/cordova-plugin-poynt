@@ -133,7 +133,7 @@ public class Poynt extends CordovaPlugin{
             showConfirmation(referencemsg);
         }
         else if (LAUNCH_TEST.equals(action)) {
-            doTest();
+           showInfo();// doTest();
         }
         return true;
     }
