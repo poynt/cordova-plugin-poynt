@@ -151,6 +151,12 @@ public class Poynt extends CordovaPlugin{
     
     /* ALE */
     
+    private String getGenString(String st){
+        return "{\n" + 
+               "    \"value\": \"" + st + "\"\n" +
+               "}";
+    }
+    
     private IPoyntSecondScreenService secondScreenService;
     private final ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
         @Override
@@ -188,20 +194,23 @@ public class Poynt extends CordovaPlugin{
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
                       bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
-                      String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT);  
-                      callbackContext.error(encoded);  
+                      String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT); 
+                      String tosend=getGenString(encoded);
+                      callbackContext.error(tosend);  
                     }
                 }
 
             });
         } catch (RemoteException e) {
             e.printStackTrace();
-            callbackContext.error("ERROR");
+            String tosend=getGenString("ERROR");
+            callbackContext.error(tosend);
         }
     }
  
     public void doTest(final CallbackContext callbackContext) {
-        callbackContext.error("YES");
+        String tosend=getGenString("YES");
+        callbackContext.error(tosend);
     }
     
     public void showCollectAgreement(final CallbackContext callbackContext) {
@@ -225,20 +234,23 @@ public class Poynt extends CordovaPlugin{
                         public void onLeftButtonClicked() throws RemoteException {
                             showConfirmation("Why not ?");
                             //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
-                            callbackContext.error("NO");
+                            String tosend=getGenString("NO");
+                            callbackContext.error(tosend);
                         }
 
                         @Override
                         public void onRightButtonClicked() throws RemoteException {
                             showConfirmation("Yey!");
                             //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
-                            callbackContext.error("YES");
+                            String tosend=getGenString("YES");
+                            callbackContext.error(tosend);
                         }
 
                     });
         } catch (RemoteException e) {
             e.printStackTrace();
-            callbackContext.error("ERROR");
+            String tosend=getGenString("ERROR");
+            callbackContext.error(tosend);
         }
     }
  
