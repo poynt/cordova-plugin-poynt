@@ -216,7 +216,7 @@ public class Poynt extends CordovaPlugin{
     
     public void showCollectAgreement() {
         try {
-            this.cbk=this.callbackContext;
+            final cbk=this.callbackContext;
             Bundle options = new Bundle();
             options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
             options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I do");
@@ -237,7 +237,7 @@ public class Poynt extends CordovaPlugin{
                             showConfirmation("Why not ?");
                             //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
                             String tosend=getGenString("NO");
-                            this.cbk.error(tosend);
+                            cbk.error(tosend);
                         }
 
                         @Override
@@ -245,7 +245,7 @@ public class Poynt extends CordovaPlugin{
                             showConfirmation("Yey!");
                             //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
                             String tosend=getGenString("YES");
-                            this.cbk.error(tosend);
+                            cbk.error(tosend);
                         }
 
                     });
