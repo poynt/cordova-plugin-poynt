@@ -27,21 +27,8 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import co.poynt.api.model.Discount;
-import co.poynt.api.model.Fee;
-import co.poynt.api.model.OrderItem;
-import co.poynt.api.model.TransactionAmounts;
-import co.poynt.os.model.Intents;
-import co.poynt.os.model.ReceiptOption;
-import co.poynt.os.model.ReceiptType;
-import co.poynt.os.services.v2.IPoyntActionButtonListener;
-import co.poynt.os.services.v2.IPoyntEmailEntryListener;
-import co.poynt.os.services.v2.IPoyntPhoneEntryListener;
-import co.poynt.os.services.v2.IPoyntReceiptChoiceListener;
-import co.poynt.os.services.v2.IPoyntScanCodeListener;
 import co.poynt.os.services.v2.IPoyntSecondScreenService;
 import co.poynt.os.services.v2.IPoyntSignatureListener;
-import co.poynt.os.services.v2.IPoyntTipListener;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
