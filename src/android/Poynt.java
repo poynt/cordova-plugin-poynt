@@ -3,6 +3,7 @@ package co.poynt.cordova.plugin;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.content.Intent;
 import android.util.Log;
