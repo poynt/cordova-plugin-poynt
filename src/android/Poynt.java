@@ -25,9 +25,20 @@ import java.text.NumberFormat;
 import co.poynt.os.model.Intents;
 import co.poynt.os.model.Payment;
 
-/**
- * Created by dennis on 5/14/16.
- */
+/* ale */
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import co.poynt.os.services.v2.IPoyntActionButtonListener;
+import co.poynt.os.services.v2.IPoyntEmailEntryListener;
+import co.poynt.os.services.v2.IPoyntPhoneEntryListener;
+import co.poynt.os.services.v2.IPoyntReceiptChoiceListener;
+import co.poynt.os.services.v2.IPoyntScanCodeListener;
+import co.poynt.os.services.v2.IPoyntSecondScreenService;
+import co.poynt.os.services.v2.IPoyntSignatureListener;
+import co.poynt.os.services.v2.IPoyntTipListener;
+/* ale */
 
 public class Poynt extends CordovaPlugin{
     private static final String TAG = "Poynt";
