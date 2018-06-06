@@ -315,7 +315,7 @@ public class Poynt extends CordovaPlugin{
      public void showInfo() {
         
             final CallbackContext cbk=this.callbackContext;
-            private IPoyntBusinessReadListener bizListener = new IPoyntBusinessReadListener.Stub() {
+            IPoyntBusinessReadListener bizListener = new IPoyntBusinessReadListener.Stub() {
             @Override
             public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
                         if (business != null){
