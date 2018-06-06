@@ -38,7 +38,8 @@ import android.os.Binder;
 import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
 import co.poynt.os.services.v2.IPoyntSecondScreenService;
 import co.poynt.os.services.v2.IPoyntSignatureListener;
- 
+import co.poynt.os.services.v2.IPoyntActionButtonListener;
+
 /* ale */
 
 public class Poynt extends CordovaPlugin{
@@ -181,6 +182,42 @@ public class Poynt extends CordovaPlugin{
                 }
 
             });
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+ 
+ 
+    public void showCollectAgreement() {
+        try {
+            Bundle options = new Bundle();
+            options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
+            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I do");
+            /** AS URL **/
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_URL);
+            String agreement = "https://www.visitamiapp.com/note-legali";
+
+            /** AS HTML **/
+//            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+//            String agreement = getAgreementText(R.raw.customer_agreement_html);
+//            /** AS TEXT **/
+//            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_TEXT);
+//            String agreement = getAgreementText(R.raw.customer_agreement);
+            secondScreenService.captureAgreement(agreement,
+                    options, new IPoyntActionButtonListener.Stub() {
+                        @Override
+                        public void onLeftButtonClicked() throws RemoteException {
+                            showConfirmation("Why not ?");
+                            setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
+                        }
+
+                        @Override
+                        public void onRightButtonClicked() throws RemoteException {
+                            showConfirmation("Yey!");
+                            setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
+                        }
+
+                    });
         } catch (RemoteException e) {
             e.printStackTrace();
         }
