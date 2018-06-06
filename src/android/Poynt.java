@@ -216,7 +216,7 @@ public class Poynt extends CordovaPlugin{
     
     public void showCollectAgreement() {
         try {
-            final cbk=this.callbackContext;
+            final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
             options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
             options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I do");
