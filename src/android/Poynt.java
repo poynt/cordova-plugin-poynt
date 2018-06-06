@@ -26,15 +26,6 @@ import co.poynt.os.model.Intents;
 import co.poynt.os.model.Payment;
 
 /* ale */
-import co.poynt.os.model.SecondScreenLabels;
-import co.poynt.os.services.v1.IPoyntSecondScreenCheckInListener;
-import co.poynt.os.services.v1.IPoyntSecondScreenCodeScanListener;
-import co.poynt.os.services.v1.IPoyntSecondScreenDynamicCurrConversionListener;
-import co.poynt.os.services.v1.IPoyntSecondScreenEmailEntryListener;
-import co.poynt.os.services.v1.IPoyntSecondScreenPhoneEntryListener;
-import co.poynt.os.services.v1.IPoyntSecondScreenService;
-import co.poynt.os.services.v1.IPoyntSecondScreenTextEntryListener;
-
 import android.os.Binder;
 import co.poynt.os.services.v1.IPoyntSecondScreenService.Stub;
 
@@ -141,8 +132,8 @@ public class Poynt extends CordovaPlugin{
     
     /* ALE */
     
-    private final IPoyntSecondScreenService secondScreenService;
-    private ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
+    private IPoyntSecondScreenService secondScreenService;
+    private final ServiceConnection secondScreenServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
