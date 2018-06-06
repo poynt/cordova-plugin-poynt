@@ -118,7 +118,7 @@ public class Poynt extends CordovaPlugin{
             collectSignature();
         }
         else if (LAUNCH_MSG.equals(action)) {
-            JSONObject arg_objectx = args.getJSONObject(0);
+            JSONObject arg_object = args.getJSONObject(0);
             String referencemsg = arg_object.getString("msg");
             showConfirmation(referencemsg);
         }
