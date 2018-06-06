@@ -313,7 +313,7 @@ public class Poynt extends CordovaPlugin{
     };
     
      public void showInfo() {
-        try {
+        
             final CallbackContext cbk=this.callbackContext;
             IPoyntBusinessReadListener bizListener = new IPoyntBusinessReadListener.Stub() {
             @Override
@@ -332,11 +332,7 @@ public class Poynt extends CordovaPlugin{
 
                     }
                 };
-          } catch (RemoteException e) {
-            e.printStackTrace();
-            String tosend=getGenString("ERROR");
-            this.callbackContext.error(tosend);
-        }
+          
     }   
     
     
