@@ -27,6 +27,13 @@ var Poynt = {
 			'launchSign', 
 			[]);
 	},
+	launchMsg: function (msg,successCallback, errorCallback){
+		cordova.exec(successCallback, 
+			errorCallback, 
+			'Poynt', 
+			'launchSign', 
+			[{"msg": msg}]);
+	},
 	launchTest: function (successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
