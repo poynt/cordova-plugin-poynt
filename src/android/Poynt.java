@@ -48,6 +48,8 @@ public class Poynt extends CordovaPlugin{
     private static final String LAUNCH_PAYMENT="launchPayment";
     private static final String LAUNCH_ASKCONF="launchAskConf";
     private static final String LAUNCH_SIGN="launchSign";
+    private static final String LAUNCH_MSG="launchMsg";
+    
     private static final String LAUNCH_TEST="launchTest";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
@@ -114,6 +116,11 @@ public class Poynt extends CordovaPlugin{
         }
         else if (LAUNCH_SIGN.equals(action)) {
             collectSignature();
+        }
+        else if (LAUNCH_MSG.equals(action)) {
+            JSONObject arg_objectx = args.getJSONObject(0);
+            String referencemsg = arg_object.getString("msg");
+            showConfirmation(referencemsg);
         }
         else if (LAUNCH_TEST.equals(action)) {
             doTest();
