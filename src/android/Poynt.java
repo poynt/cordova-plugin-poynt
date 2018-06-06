@@ -111,7 +111,7 @@ public class Poynt extends CordovaPlugin{
             showCollectAgreement(callbackContext);
         }
         else if (LAUNCH_TEST.equals(action)) {
-            doTest(callbackContext);
+            doTest();
         }
         return true;
     }
@@ -208,9 +208,9 @@ public class Poynt extends CordovaPlugin{
         }
     }
  
-    public void doTest(final CallbackContext callbackContext) {
+    public void doTest() {
          
-        callbackContext.error(getErrorString());
+        this.callbackContext.error(getErrorString());
     }
     
     public void showCollectAgreement(final CallbackContext callbackContext) {
