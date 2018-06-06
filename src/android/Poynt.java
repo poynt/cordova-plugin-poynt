@@ -27,7 +27,7 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import co.poynt.os.services.v1;
+import co.poynt.os.search;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
