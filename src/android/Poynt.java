@@ -294,4 +294,50 @@ public class Poynt extends CordovaPlugin{
     }
  
     /* ALE */
+    
+    /* ALE2 */
+    
+    private IPoyntBusinessService businessService;
+    private ServiceConnection bizServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            
+            businessService = IPoyntBusinessService.Stub.asInterface(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            businessService=null;
+        }
+    };
+    
+     public void showInfo() {
+        try {
+            final CallbackContext cbk=this.callbackContext;
+            IPoyntBusinessReadListener bizListener = new IPoyntBusinessReadListener.Stub() {
+            @Override
+            public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
+                        if (business != null){
+                             String businessName = business.getLegalName();
+                             String tosend=getGenString(businessName);
+                             cbk.success(tosend);
+                        }
+                        else
+                        {
+                            String tosend=getGenString("NO BUSINESS");
+                            cbk.error(tosend);
+                        }
+
+
+                    }
+                };
+          } catch (RemoteException e) {
+            e.printStackTrace();
+            String tosend=getGenString("ERROR");
+            this.callbackContext.error(tosend);
+        }
+    }   
+    
+    
+    /*  */
 }
