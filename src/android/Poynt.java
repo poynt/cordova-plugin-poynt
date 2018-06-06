@@ -188,7 +188,7 @@ public class Poynt extends CordovaPlugin{
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
                       bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
-                      String encoded = Base64.encodeToString(byteArray);  
+                      String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT);  
                       callbackContext.error(encoded);  
                     }
                 }
