@@ -27,7 +27,7 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 import android.os.Binder;
-import co.poynt.os.services.v1.IPoyntSecondScreenService.Stub;
+import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
