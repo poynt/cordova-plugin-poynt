@@ -152,10 +152,7 @@ public class Poynt extends CordovaPlugin{
     
    private void showConfirmation(String message) {
         try {
-            Bitmap customBackgroundImage = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.thank_you_screen_bg);
             Bundle options = new Bundle();
-            options.putParcelable(Intents.EXTRA_BACKGROUND_IMAGE, customBackgroundImage);
             secondScreenService.displayMessage(message, options);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -173,9 +170,9 @@ public class Poynt extends CordovaPlugin{
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
                     showConfirmation("Thanks for the beautiful signature!");
-                    if (bitmap != null){
+                    /*if (bitmap != null){
                         setStatus(captureSignatureStatus, "SIGNATURE CAPTURED");
-                    }
+                    }*/
                 }
 
             });
