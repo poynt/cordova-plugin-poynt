@@ -27,7 +27,7 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import co.poynt.os.model.CardSession;
+import co.poynt.os.model.PaymentSettings;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
