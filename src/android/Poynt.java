@@ -39,7 +39,8 @@ import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
 import co.poynt.os.services.v2.IPoyntSecondScreenService;
 import co.poynt.os.services.v2.IPoyntSignatureListener;
 import co.poynt.os.services.v2.IPoyntActionButtonListener;
-
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 /* ale */
 
 public class Poynt extends CordovaPlugin{
