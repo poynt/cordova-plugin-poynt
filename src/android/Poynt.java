@@ -208,13 +208,13 @@ public class Poynt extends CordovaPlugin{
                         @Override
                         public void onLeftButtonClicked() throws RemoteException {
                             showConfirmation("Why not ?");
-                            setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
+                            //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
                         }
 
                         @Override
                         public void onRightButtonClicked() throws RemoteException {
                             showConfirmation("Yey!");
-                            setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
+                            //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
                         }
 
                     });
