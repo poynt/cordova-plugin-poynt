@@ -53,7 +53,7 @@ import co.poynt.os.services.v1.IPoyntBusinessReadListener;
 import co.poynt.os.services.v1.IPoyntBusinessService;
 
 /* */
-public class Poynt extends CordovaPlugin implements ServiceConnection {
+public class Poynt extends CordovaPlugin  {
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
     private static final String LAUNCH_ASKCONF="launchAskConf";
@@ -337,18 +337,6 @@ public class Poynt extends CordovaPlugin implements ServiceConnection {
     
     /*  */
     
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-             
-             String tosend=getGenString("SERVICE BOND");
-             this.callbackContext.success(tosend);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-             
-             String tosend=getGenString("SERVICE UNBOND");
-             this.callbackContext.success(tosend);
-        }
+      
     
 }
