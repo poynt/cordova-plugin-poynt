@@ -190,6 +190,17 @@ public class Poynt extends CordovaPlugin{
         }
     }
  
+    public void showWelcome(String message) {
+        try {
+            Bundle options = new Bundle();
+            options.putString("FONT_COLOR", "#f07f22");
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+            secondScreenService.displayMessage(message, options);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void collectSignature() {
         try {
             final CallbackContext cbk=this.callbackContext;
