@@ -3,12 +3,7 @@ package co.poynt.cordova.plugin;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
 import android.content.Intent;
-import android.os.RemoteException;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -31,6 +26,14 @@ import co.poynt.os.model.Intents;
 import co.poynt.os.model.Payment;
 
 /* ale */
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.IBinder;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import android.os.Binder;
 import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
 import co.poynt.os.services.v2.IPoyntSecondScreenService;
