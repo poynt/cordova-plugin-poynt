@@ -19,6 +19,13 @@ var Poynt = {
 			'Poynt', 
 			'launchAskConf', 
 			[]);
+	},
+	launchTest: function (successCallback, errorCallback){
+		cordova.exec(successCallback, 
+			errorCallback, 
+			'Poynt', 
+			'launchTest', 
+			[]);
 	}
 }
 
