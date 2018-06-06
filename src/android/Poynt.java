@@ -27,9 +27,6 @@ import co.poynt.os.model.Payment;
 
 /* ale */
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import co.poynt.api.model.Discount;
 import co.poynt.api.model.Fee;
 import co.poynt.api.model.OrderItem;
