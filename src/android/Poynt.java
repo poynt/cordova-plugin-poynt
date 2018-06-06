@@ -37,7 +37,7 @@ import android.graphics.BitmapFactory;
 import android.os.Binder;
 import co.poynt.os.services.v2.IPoyntSecondScreenService.Stub;
 import co.poynt.os.services.v2.IPoyntSecondScreenService;
-import co.poynt.os.services.v2.IPoyntSignatureListener.Stub;
+import co.poynt.os.services.v2.IPoyntSignatureListener;
  
 /* ale */
 
