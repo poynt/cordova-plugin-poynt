@@ -53,7 +53,7 @@ import co.poynt.os.services.v1.IPoyntBusinessReadListener;
 import co.poynt.os.services.v1.IPoyntBusinessService;
 
 /* */
-public class Poynt extends CordovaPlugin{
+public class Poynt extends CordovaPlugin implements ServiceConnection {
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
     private static final String LAUNCH_ASKCONF="launchAskConf";
@@ -183,6 +183,18 @@ public class Poynt extends CordovaPlugin{
     private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
     
+    /*public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+         
+        Context applicationContext = cordova.getActivity().getApplicationContext();
+        applicationContext.bindService(
+                                       new Intent(cordova.getActivity(),
+                                                  MetaWearBleService.class),
+                                       this, Context.BIND_AUTO_CREATE
+                                       );
+        Log.v(TAG,"Init Device");
+    }
+    /*
     private final ServiceConnection genConnection = new ServiceConnection() {
          
          
@@ -200,6 +212,20 @@ public class Poynt extends CordovaPlugin{
             businessService = null;
         }
     };
+    */
+       @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+             
+            secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
+            businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+             
+            secondScreenService = null;
+            businessService = null;
+        }
     
    private void showConfirmation(String message) {
         try {
