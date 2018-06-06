@@ -43,6 +43,15 @@ import java.io.ByteArrayOutputStream;
 import android.util.Base64;
 /* ale */
 
+/* ale2 */
+import co.poynt.api.model.Business;
+import co.poynt.api.model.Phone;
+import co.poynt.api.model.Store;
+import co.poynt.api.model.StoreDevice;
+import co.poynt.os.services.v1.IPoyntBusinessReadListener;
+import co.poynt.os.services.v1.IPoyntBusinessService;
+
+/* */
 public class Poynt extends CordovaPlugin{
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
