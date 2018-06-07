@@ -94,15 +94,16 @@ public class Poynt extends CordovaPlugin  {
      */
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         //TODO add different actions, the one below shoud be "charge"
+        this.callbackContext = callbackContext;
+        this.executeArgs = args;
         
         if (LAUNCH_INIT.equals(action))
         {
-            bindService(callbackContext);
+            bindService();
             return true;
         }
         
-        this.callbackContext = callbackContext;
-        this.executeArgs = args;
+       
          
         if (LAUNCH_PAYMENT.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
@@ -192,42 +193,40 @@ public class Poynt extends CordovaPlugin  {
     private ServiceConnection serviceConnection;
     private ServiceConnection serviceConnectionI;
     
-    public void bindService(final CallbackContext callbackContext) {
+    public void bindService() {
         //setup service connection
+        final CallbackContext cbk=this.callbackContext;
+        
         serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 secondScreenService=null;
-                callbackContext.error("Error Binding SecondScreen");
+                cbk.error("Error Binding SecondScreen");
                 }
 
             @Override
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 secondScreenService = IPoyntSecondScreenService.Stub.asInterface(service);
-                callbackContext.success("");
+                cbk.success("");
             }
         };
         serviceConnectionI = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 businessService = null;
-                callbackContext.error("Error Binding businessService");
+                cbk.error("Error Binding businessService");
                 }
 
             @Override
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 businessService = IPoyntBusinessService.Stub.asInterface(service);
-                callbackContext.success("");
+                cbk.success("");
             }
         };
-        cordova.getActivity()
-                .bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),
-                serviceConnection, BIND_AUTO_CREATE);
-        cordova.getActivity()
-                .bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),
-                serviceConnectionI, BIND_AUTO_CREATE);
+        cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
+        cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
     }
     
      
