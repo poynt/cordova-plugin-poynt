@@ -51,7 +51,7 @@ import co.poynt.api.model.Store;
 import co.poynt.api.model.StoreDevice;
 import co.poynt.os.services.v1.IPoyntBusinessReadListener;
 import co.poynt.os.services.v1.IPoyntBusinessService;
-
+import static android.content.Context.BIND_AUTO_CREATE;
 /* */
 public class Poynt extends CordovaPlugin  {
     private static final String TAG = "Poynt";
@@ -214,7 +214,7 @@ public class Poynt extends CordovaPlugin  {
         };
         cordova.getActivity()
                 .bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),
-                serviceConnection, Context.BIND_AUTO_CREATE);
+                serviceConnection, BIND_AUTO_CREATE);
     }
     
      
