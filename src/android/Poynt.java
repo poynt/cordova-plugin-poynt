@@ -205,7 +205,7 @@ public class Poynt extends CordovaPlugin  {
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 secondScreenService = IPoyntSecondScreenService.Stub.asInterface(service);
-                //callbackContext.success("OK BIND secondScreenService");
+                callbackContext.success();
             }
         };
         serviceConnectionI = new ServiceConnection() {
@@ -219,7 +219,7 @@ public class Poynt extends CordovaPlugin  {
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 businessService = IPoyntBusinessService.Stub.asInterface(service);
-                //callbackContext.success("OK BIND businessService");
+                callbackContext.success();
             }
         };
         cordova.getActivity()
