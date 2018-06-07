@@ -137,7 +137,7 @@ public class Poynt extends CordovaPlugin  {
         else if (LAUNCH_MSG.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
             String referencemsg = arg_object.getString("msg");
-            showConfirmation(referencemsg);
+            showWelcome(referencemsg);
         }
         else if (LAUNCH_TEST.equals(action)) {
            showInfo();// doTest();
@@ -205,7 +205,7 @@ public class Poynt extends CordovaPlugin  {
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 secondScreenService = IPoyntSecondScreenService.Stub.asInterface(service);
-                callbackContext.success("OK BIND secondScreenService");
+                //callbackContext.success("OK BIND secondScreenService");
             }
         };
         serviceConnectionI = new ServiceConnection() {
@@ -219,7 +219,7 @@ public class Poynt extends CordovaPlugin  {
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 businessService = IPoyntBusinessService.Stub.asInterface(service);
-                callbackContext.success("OK BIND businessService");
+                //callbackContext.success("OK BIND businessService");
             }
         };
         cordova.getActivity()
@@ -247,9 +247,9 @@ public class Poynt extends CordovaPlugin  {
             /*options.putString("FONT_COLOR", "#f07f22");
             options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
             secondScreenService.displayMessage(message, options);*/
-            options.putString("FONT_COLOR", "#eef442");
+            options.putString("FONT_COLOR", "#f07f22");
             options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
-            secondScreenService.displayMessage("<h2>Thank You</h2><p>Good-bye!</p>", options);
+            secondScreenService.displayMessage(message, options);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
