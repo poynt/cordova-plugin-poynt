@@ -95,7 +95,7 @@ public class Poynt extends CordovaPlugin  {
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         //TODO add different actions, the one below shoud be "charge"
         
-        if (LAUNCH_INIT.equals(action))
+        if (LAUNCH_TEST.equals(action))
         {
             bindService(callbackContext);
             return true;
