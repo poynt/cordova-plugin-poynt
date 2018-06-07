@@ -59,7 +59,7 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_ASKCONF="launchAskConf";
     private static final String LAUNCH_SIGN="launchSign";
     private static final String LAUNCH_MSG="launchMsg";
-    
+    private static final String LAUNCH_INIT="launchInit";
     private static final String LAUNCH_TEST="launchTest";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
@@ -94,9 +94,16 @@ public class Poynt extends CordovaPlugin  {
      */
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         //TODO add different actions, the one below shoud be "charge"
+        
+        if (LAUNCH_INIT.equals(action))
+        {
+            bindService(callbackContext);
+            return true;
+        }
+        
         this.callbackContext = callbackContext;
         this.executeArgs = args;
-        
+         
         if (LAUNCH_PAYMENT.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
             Long amount = arg_object.getLong("amount");
@@ -182,24 +189,35 @@ public class Poynt extends CordovaPlugin  {
      
     private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
+    private ServiceConnection serviceConnection;
     
-    private final ServiceConnection genConnection = new ServiceConnection() {
-         
-         
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-             
-            secondScreenService = IPoyntSecondScreenService.Stub.asInterface(iBinder);
-            businessService = IPoyntBusinessService.Stub.asInterface(iBinder);
-        }
+     public void bindService(final CallbackContext callbackContext) {
+        //setup service connection
+        serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                businessService = null;
+                secondScreenService=null;
+                String tosend=getGenString("UNBIND ERROR");
+                callbackContext.error(tosend);
+                }
 
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-             
-            secondScreenService = null;
-            businessService = null;
-        }
-    };
+            @Override
+            public void onServiceConnected(ComponentName name,
+                    IBinder service) {
+                secondScreenService = IPoyntSecondScreenService.Stub.asInterface(service);
+                //businessService = IPoyntBusinessService.Stub.asInterface(service);
+                
+                String tosend=getGenString("OK BIND");
+                callbackContext.success(tosend);
+            }
+        };
+        /*cordova.getActivity()
+                .bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"),
+                serviceConnection, Context.BIND_AUTO_CREATE);*/
+    }
+    
+     
       
    private void showConfirmation(String message) {
         try {
