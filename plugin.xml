@@ -19,6 +19,7 @@
 		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 		<config-file target="AndroidManifest.xml" parent="/*">
             		<uses-permission android:name="poynt.permission.SECOND_SCREEN_SERVICE" />
+			<uses-permission android:name="poynt.permission.BUSINESS_SERVICE" />
         	</config-file>
 		
 	</platform>
