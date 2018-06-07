@@ -198,34 +198,28 @@ public class Poynt extends CordovaPlugin  {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 secondScreenService=null;
-                String tosend=getGenString("UNBIND ERROR");
-                callbackContext.error(tosend);
+                callbackContext.error("Error Binding SecondScreen");
                 }
 
             @Override
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 secondScreenService = IPoyntSecondScreenService.Stub.asInterface(service);
-               
-                String tosend=getGenString("OK BIND");
-                callbackContext.success(tosend);
+                callbackContext.success("OK BIND secondScreenService");
             }
         };
         serviceConnectionI = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 businessService = null;
-                String tosend=getGenString("UNBIND ERROR");
-                callbackContext.error(tosend);
+                callbackContext.error("Error Binding businessService");
                 }
 
             @Override
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
                 businessService = IPoyntBusinessService.Stub.asInterface(service);
-                
-                String tosend=getGenString("OK BIND INFO");
-                callbackContext.success(tosend);
+                callbackContext.success("OK BIND businessService");
             }
         };
         cordova.getActivity()
@@ -277,16 +271,14 @@ public class Poynt extends CordovaPlugin  {
                       bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
                       String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT); 
-                      String tosend=getGenString(encoded);
-                      cbk.success(tosend);  
+                      cbk.success(encoded);  
                     }
                 }
 
             });
         } catch (RemoteException e) {
             e.printStackTrace();
-            String tosend=getGenString("ERROR");
-            this.callbackContext.error(tosend);
+            this.callbackContext.error("Error");
         }
     }
  
@@ -315,25 +307,18 @@ public class Poynt extends CordovaPlugin  {
                     options, new IPoyntActionButtonListener.Stub() {
                         @Override
                         public void onLeftButtonClicked() throws RemoteException {
-                            showConfirmation("Why not ?");
-                            //setStatus(collectAgreementStatus, "LEFT BUTTON TAPPED");
-                            String tosend=getGenString("NO");
-                            cbk.error(tosend);
+                            cbk.success("NO");
                         }
 
                         @Override
                         public void onRightButtonClicked() throws RemoteException {
-                            showConfirmation("Yey!");
-                            //setStatus(collectAgreementStatus, "RIGHT BUTTON TAPPED");
-                            String tosend=getGenString("YES");
-                            cbk.success(tosend);
+                            cbk.success("YES");
                         }
 
                     });
         } catch (RemoteException e) {
             e.printStackTrace();
-            String tosend=getGenString("ERROR");
-            this.callbackContext.error(tosend);
+            this.callbackContext.error("ERROR");
         }
     }
  
@@ -352,24 +337,19 @@ public class Poynt extends CordovaPlugin  {
             public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
                         if (business != null){
                              String businessName = business.getLegalName();
-                             String tosend=getGenString(businessName);
-                             cbk.success(tosend);
+                             cbk.success(businessName);
                         }
                         else
                         {
-                            String tosend=getGenString("NO BUSINESS");
-                            cbk.error(tosend);
+                            cbk.error("NO BUSINESS");
                         }
-
-
                     }
                 };
         try{
                 businessService.getBusiness(bizListener);
             } catch (RemoteException e) {
                 e.printStackTrace();
-                String tosend=getGenString("ERROR");
-                this.callbackContext.error(tosend); 
+                this.callbackContext.error("ERROR"); 
             } 
     }   
     
