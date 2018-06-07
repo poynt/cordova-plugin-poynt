@@ -95,7 +95,7 @@ public class Poynt extends CordovaPlugin  {
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         //TODO add different actions, the one below shoud be "charge"
         
-        if (LAUNCH_TEST.equals(action))
+        if (LAUNCH_INIT.equals(action))
         {
             bindService(callbackContext);
             return true;
@@ -250,9 +250,12 @@ public class Poynt extends CordovaPlugin  {
     public void showWelcome(String message) {
         try {
             Bundle options = new Bundle();
-            options.putString("FONT_COLOR", "#f07f22");
+            /*options.putString("FONT_COLOR", "#f07f22");
             options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
-            secondScreenService.displayMessage(message, options);
+            secondScreenService.displayMessage(message, options);*/
+            options.putString("FONT_COLOR", "#eef442");
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+            secondScreenService.displayMessage("<h2>Thank You</h2><p>Good-bye!</p>", options);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
