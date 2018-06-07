@@ -213,7 +213,7 @@ public class Poynt extends CordovaPlugin  {
             }
         };
         cordova.getActivity()
-                .bindService(new Intent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),
+                .bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),
                 serviceConnection, Context.BIND_AUTO_CREATE);
     }
     
