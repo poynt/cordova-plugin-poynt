@@ -292,8 +292,8 @@ public class Poynt extends CordovaPlugin  {
         try {
             final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
-            options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
-            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I do");
+            options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "NO");
+            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "ACCETTO");
             /** AS URL **/
             //options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_URL);
             //String agreement = "https://www.visitamiapp.com/note-legali";
