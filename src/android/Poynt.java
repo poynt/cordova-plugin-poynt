@@ -60,7 +60,7 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_SIGN="launchSign";
     private static final String LAUNCH_MSG="launchMsg";
     private static final String LAUNCH_INIT="launchInit";
-    private static final String LAUNCH_TEST="launchTest";
+    private static final String LAUNCH_TEST="launchInfo";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
