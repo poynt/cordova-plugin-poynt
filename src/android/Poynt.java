@@ -329,7 +329,14 @@ public class Poynt extends CordovaPlugin  {
     /* ALE2 */
     
     
-     
+     public String InfoStr(Business business)
+     {
+      return "{\n" + 
+               "    \"name\": \"" + business.getLegalName().replace("\"", "") + "\",\n" +
+               "    \"email\": \"" + business.getEmailAddress().replace("\"", "") + "\",\n" +
+               "    \"phone\": \"" + business.getPhone().replace("\"", "") + "\"\n" +
+               "}"; 
+     }
     
      public void showInfo() {
         
@@ -338,7 +345,7 @@ public class Poynt extends CordovaPlugin  {
             @Override
             public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
                         if (business != null){
-                             String businessName = business.getLegalName();
+                             String businessName =InfoStr(business);// business.getLegalName();
                              cbk.success(businessName);
                         }
                         else
