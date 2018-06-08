@@ -330,7 +330,8 @@ public class Poynt extends CordovaPlugin  {
      {
       return "{\"name\": \"" + business.getLegalName().replace("\"","") + "\"," +
                "\"email\": \"" + business.getEmailAddress().replace("\"","") + "\"," +
-               "\"phone\": \"" + business.getPhone().getLocalPhoneNumber().replace("\"","") + "\"}"; 
+               "\"phone\": \"" + business.getPhone().getLocalPhoneNumber().replace("\"","") + "\","+
+               "\"mcc\": \"" + business.getMcc() +"\"}"; 
      }
     
      public void showInfo() {
