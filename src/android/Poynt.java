@@ -130,7 +130,9 @@ public class Poynt extends CordovaPlugin  {
             }
         }
         else if (LAUNCH_ASKCONF.equals(action)) {
-            showCollectAgreement();
+            JSONObject arg_object = args.getJSONObject(0);
+            String referencemsg = arg_object.getString("msg");
+            showCollectAgreement(referencemsg);
         }
         else if (LAUNCH_SIGN.equals(action)) {
             collectSignature();
@@ -286,19 +288,19 @@ public class Poynt extends CordovaPlugin  {
         this.callbackContext.success(getGenString("CIAO!"));
     }
     
-    public void showCollectAgreement() {
+    public void showCollectAgreement(String msg) {
         try {
             final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
             options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Nope");
             options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I do");
             /** AS URL **/
-            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_URL);
-            String agreement = "https://www.visitamiapp.com/note-legali";
-
-            /** AS HTML **/
-//            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
-//            String agreement = getAgreementText(R.raw.customer_agreement_html);
+            //options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_URL);
+            //String agreement = "https://www.visitamiapp.com/note-legali";
+            /* */
+           
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+            String agreement = msg;
 //            /** AS TEXT **/
 //            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_TEXT);
 //            String agreement = getAgreementText(R.raw.customer_agreement);
