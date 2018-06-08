@@ -334,7 +334,7 @@ public class Poynt extends CordovaPlugin  {
       return "{\n" + 
                "    \"name\": \"" + business.getLegalName().replace("\"", "") + "\",\n" +
                "    \"email\": \"" + business.getEmailAddress().replace("\"", "") + "\",\n" +
-               "    \"phone\": \"" + business.getPhone().replace("\"", "") + "\"\n" +
+               "    \"phone\": \"" + business.getPhone() + "\"\n" +
                "}"; 
      }
     
