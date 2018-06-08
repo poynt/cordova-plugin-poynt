@@ -345,7 +345,7 @@ public class Poynt extends CordovaPlugin  {
             @Override
             public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
                         if (business != null){
-                             String businessName =InfoStr(business);// business.getLegalName();
+                             String businessName =business.getLegalName();
                              cbk.success(businessName);
                         }
                         else
