@@ -13,12 +13,12 @@ var Poynt = {
 				"referenceId": referenceId
 			}]);
 	},
-	launchAskConf: function (successCallback, errorCallback){
+	launchAskConf: function (msg,successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
 			'launchAskConf', 
-			[]);
+			[{"msg": msg}]);
 	},
 	launchSign: function (successCallback, errorCallback){
 		cordova.exec(successCallback, 
