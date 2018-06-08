@@ -299,7 +299,8 @@ public class Poynt extends CordovaPlugin  {
             //String agreement = "https://www.visitamiapp.com/note-legali";
             /* */
            
-            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+            //options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_URL);
             String agreement = msg;
 //            /** AS TEXT **/
 //            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_TEXT);
