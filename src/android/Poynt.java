@@ -143,7 +143,7 @@ public class Poynt extends CordovaPlugin  {
             showWelcome(referencemsg);
         }
         else if (LAUNCH_TEST.equals(action)) {
-           showInfo();// doTest();
+           showInfo(); 
         }
         return true;
     }
@@ -283,10 +283,7 @@ public class Poynt extends CordovaPlugin  {
         }
     }
  
-    public void doTest() {
-         
-        this.callbackContext.success(getGenString("CIAO!"));
-    }
+     
     
     public void showCollectAgreement(String msg) {
         try {
