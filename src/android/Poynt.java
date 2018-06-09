@@ -260,16 +260,17 @@ public class Poynt extends CordovaPlugin  {
         try {
             final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
-            options.putString(Intents.EXTRA_TITLE, "autograph please");
-            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "I agree");
-            options.putString(Intents.EXTRA_TEXT_UNDER_LINE, "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
+            options.putString(Intents.EXTRA_TITLE, "Firma per Accettazione");
+            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "Fatto");
+            options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Pulisci");
+            //options.putString(Intents.EXTRA_TEXT_UNDER_LINE, "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
             secondScreenService.captureSignature(null, options, new IPoyntSignatureListener.Stub() {
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
                     showConfirmation("Thanks for the beautiful signature!");
                     if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
-                      bitmap.compress(Bitmap.CompressFormat.PNG, 40, byteArrayOutputStream);
+                      bitmap.compress(Bitmap.CompressFormat.PNG, 20, byteArrayOutputStream);
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
                       String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT); 
                       cbk.success(encoded);  
