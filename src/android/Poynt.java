@@ -269,7 +269,7 @@ public class Poynt extends CordovaPlugin  {
                     showConfirmation("Thanks for the beautiful signature!");
                     if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
-                      bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                      bitmap.compress(Bitmap.CompressFormat.PNG, 40, byteArrayOutputStream);
                       byte[] byteArray = byteArrayOutputStream .toByteArray();
                       String encoded = Base64.encodeToString(byteArray,Base64.DEFAULT); 
                       cbk.success(encoded);  
