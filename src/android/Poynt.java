@@ -135,7 +135,9 @@ public class Poynt extends CordovaPlugin  {
             showCollectAgreement(referencemsg);
         }
         else if (LAUNCH_SIGN.equals(action)) {
-            collectSignature();
+            JSONObject arg_object = args.getJSONObject(0);
+            String referencemsg = arg_object.getString("msg");
+            collectSignature(referencemsg);
         }
         else if (LAUNCH_MSG.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
@@ -236,6 +238,8 @@ public class Poynt extends CordovaPlugin  {
    private void showConfirmation(String message) {
         try {
             Bundle options = new Bundle();
+            options.putString("FONT_COLOR", "#f07f22");
+            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
             secondScreenService.displayMessage(message, options);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -256,7 +260,7 @@ public class Poynt extends CordovaPlugin  {
         }
     }
     
-    public void collectSignature() {
+    public void collectSignature(String msg) {
         try {
             final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
@@ -267,7 +271,7 @@ public class Poynt extends CordovaPlugin  {
             secondScreenService.captureSignature(null, options, new IPoyntSignatureListener.Stub() {
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
-                    showConfirmation("Thanks for the beautiful signature!");
+                    showConfirmation(msg);
                     if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
                       bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
