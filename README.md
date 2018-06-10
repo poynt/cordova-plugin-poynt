@@ -35,9 +35,9 @@ Please feel free to contribute. You can [report bugs](https://github.com/poynt/c
 
 ---
 
-<a name="module_Poynt"></a>
+ 
 ## Poynt
-<a name="module_camera.getPicture"></a>
+ 
 ### Poynt.launchPayment(amount, referenceId, successCallback, errorCallback)
 Launches Payment Fragment with the payment amount as `amount`.  The transaction response passed to the success callback as a JSON object.
 
