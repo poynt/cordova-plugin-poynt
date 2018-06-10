@@ -159,9 +159,27 @@ __Supported Platforms__
 
 **Example Request**  
 ```js
-Poynt.launchInit('succcessCallback, failureCallback);
+Poynt.launchInit(succcessCallback, failureCallback);
 ```
 
+<a name="Poynt.launchMsg"></a>
+### Poynt.launchMsg(msg,successCallback, errorCallback)
+Launches displayMessage passing the msg as parameter.
+
+__Supported Platforms__
+
+- PoyntOS
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| successCallback |  |  |
+| errorCallback |  |  |
+
+**Example Request**  
+```js
+Poynt.launchMsg('a message in second screen',succcessCallback, failureCallback);
+```
 
 
 
