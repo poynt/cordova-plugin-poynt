@@ -104,7 +104,7 @@ Poynt.launchPayment(777, 'myRefId', succcessCallback, failureCallback);
 ```
 <a name="Poynt.launchAskConf"></a>
 ### Poynt.launchAskConf(msg,  successCallback, errorCallback)
-Launches Payment Fragment with the payment amount as `amount`.  The transaction response passed to the success callback as a JSON object.
+Launches captureAgreement passing msg as URL. "YES" or "NOT" strings are passed back in callback. In case of error, errorCallback is called with error string in argument
 
 __Supported Platforms__
 
@@ -113,59 +113,38 @@ __Supported Platforms__
 
 | Param | Type | Description |
 | --- | --- | --- |
-| amount | long (e.g. `755` would translate to `$7.55` | payment amount |
-| referenceId | String | referenceId return in transaction response |
+| msg | string | URL for text/HTML |
 | successCallback |  |  |
 | errorCallback |  |  |
 
 **Example Request**  
 ```js
-Poynt.launchPayment(777, 'myRefId', succcessCallback, failureCallback);
+Poynt.launchAskConf('http://example.com/privacy.html', succcessCallback, failureCallback);
 ```
 
-**Example Response**
+<a name="Poynt.launchSign"></a>
+### Poynt.launchSign(title, butt, msg, successCallback, errorCallback)
+Launches captureSignature passing title, button name (only for Accept behaviour) and message. In case of success the function returns a base64 string that represents the bitmap bytestream of the signature as argument in successCallback. In case of error an error string in errorCallback. 
+
+__Supported Platforms__
+
+- PoyntOS
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| title | string | title of the actvity |
+| butt | string | text for Accept button |
+| msg | string | string for text unde sign region |
+| successCallback |  |  |
+| errorCallback |  |  |
+
+**Example Request**  
 ```js
-{
-   "transactions": [
-     {
-       "action": "SALE",
-       "amounts": {
-         "cashbackAmount": 0,
-         "currency": "USD",
-         "customerOptedNoTip": false,
-         "orderAmount": 777,
-         "tipAmount": 0,
-         "transactionAmount": 777
-     },
-       "fundingSource": {
-         "type": "CASH"
-        },
-       "id": "abb0093c-2e3e-4500-9b16-658ec2eb8287",
-       "references": [
-         {
-           "customType": "referenceId",
-           "id": "myRefId",
-           "type": "CUSTOM"
-         }
-       ],
-       "status": "CAPTURED"
-     }
-    ],
-   "status": "COMPLETED",
-   "currency": "USD",
-   "referenceId": "myRefId",
-   "amount": 777,
-   "tipAmount": 0,
-   "cashbackAmount": 0,
-   "disableDebitCards": false,
-   "disableCash": false,
-   "debit": false,
-   "disableTip": false,
-   "cashOnly": false,
-   "nonReferencedCredit": false,
-   "authzOnly": false,
-   "multiTender": false
-}
+Poynt.launchSign('Confirm by sign','Signed','by signing you agree...', succcessCallback, failureCallback);
 ```
+
+
+
 
 
