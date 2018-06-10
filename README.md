@@ -104,7 +104,7 @@ Poynt.launchPayment(777, 'myRefId', succcessCallback, failureCallback);
 ```
 <a name="Poynt.launchAskConf"></a>
 ### Poynt.launchAskConf(msg,  successCallback, errorCallback)
-Launches captureAgreement passing msg as URL. "YES" or "NOT" strings are passed back in callback. In case of error, errorCallback is called with error string in argument
+Launches secondScreenService->captureAgreement passing msg as URL. "YES" or "NOT" strings are passed back in callback. In case of error, errorCallback is called with error string in argument
 
 __Supported Platforms__
 
@@ -124,7 +124,7 @@ Poynt.launchAskConf('http://example.com/privacy.html', succcessCallback, failure
 
 <a name="Poynt.launchSign"></a>
 ### Poynt.launchSign(title, butt, msg, successCallback, errorCallback)
-Launches captureSignature passing title, button name (only for Accept behaviour) and message. In case of success the function returns a base64 string that represents the bitmap bytestream of the signature as argument in successCallback. In case of error an error string in errorCallback. 
+Launches secondScreenService->captureSignature passing title, button name (only for Accept behaviour) and message. In case of success the function returns a base64 string that represents the bitmap bytestream of the signature as argument in successCallback. In case of error an error string in errorCallback. 
 
 __Supported Platforms__
 
@@ -164,7 +164,7 @@ Poynt.launchInit(succcessCallback, failureCallback);
 
 <a name="Poynt.launchMsg"></a>
 ### Poynt.launchMsg(msg,successCallback, errorCallback)
-Launches displayMessage passing the msg as parameter.
+Launches secondScreenService->displayMessage passing the msg as parameter.
 
 __Supported Platforms__
 
@@ -180,6 +180,34 @@ __Supported Platforms__
 ```js
 Poynt.launchMsg('a message in second screen',succcessCallback, failureCallback);
 ```
+<a name="Poynt.launchInfo"></a>
+### Poynt.launchInfo(successCallback, errorCallback)
+Launches businessService->getBusiness. The response is passed to the success callback as a JSON object. In case of error a string is passed in errorCallback
 
+__Supported Platforms__
+
+- PoyntOS
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| referenceId | String | referenceId return in transaction response |
+| successCallback |  |  |
+| errorCallback |  |  |
+
+**Example Request**  
+```js
+Poynt.launchInfo(succcessCallback, failureCallback);
+```
+
+**Example Response**
+```js
+{
+   "name": "My Business Name",
+   "email": "email@email....",
+   "phone": "021223-.....",
+   "mcc": "8099" 
+}
+```
 
 
