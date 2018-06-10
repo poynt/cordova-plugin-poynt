@@ -191,7 +191,6 @@ __Supported Platforms__
 
 | Param | Type | Description |
 | --- | --- | --- |
-| referenceId | String | referenceId return in transaction response |
 | successCallback |  |  |
 | errorCallback |  |  |
 
