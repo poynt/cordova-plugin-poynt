@@ -20,7 +20,7 @@ It is also possible to install via repo url directly
 
 ## How to Contribute
 
-Please feel free to contribute. You can [report bugs](https://github.com/poynt/cordova-plugin-poynt/issues), improve the documentation, or [contribute code](https://github.com/xale76/cordova-plugin-poynt2/pulls).
+Please feel free to contribute. You can [report bugs](https://github.com/xale76/cordova-plugin-poynt2/issues), improve the documentation, or [contribute code](https://github.com/xale76/cordova-plugin-poynt2/pulls).
 
 ---
 
