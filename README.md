@@ -1,32 +1,37 @@
 ---
 title: Poynt
-description: Work with Poynt Payment Fragment
+description: Work with Poynt Payment Fragment, Second Screen Service
 ---
 
-# cordova-plugin-poynt
+# cordova-plugin-poynt2
 
 This plugin defines a global `Poynt` object, which provides an API for working with Poynt Payment Fragment.
 
 ## Installation
-The plugin was written and tested using with cordova v6.1.1
+The plugin was written and tested using with cordova v6.3.0
 
-    cordova plugin add cordova-plugin-poynt
+    cordova plugin add cordova-plugin-poynt2
     
 It is also possible to install via repo url directly
 
-    cordova plugin add https://github.com/poynt/cordova-plugin-poynt.git
+    cordova plugin add https://github.com/xale76/cordova-plugin-poynt2.git
     
 
 
 ## How to Contribute
 
-Please feel free to contribute. You can [report bugs](https://github.com/poynt/cordova-plugin-poynt/issues), improve the documentation, or [contribute code](https://github.com/poynt/cordova-plugin-poynt/pulls).
+Please feel free to contribute. You can [report bugs](https://github.com/poynt/cordova-plugin-poynt/issues), improve the documentation, or [contribute code](https://github.com/xale76/cordova-plugin-poynt2/pulls).
 
 ---
 
 # API Reference <a name="reference"></a>
 * [Poynt](#module_Poynt)
     * [.launchPayment(amount, referenceId, successCallback, errorCallback)](#module_Poynt.launchPayment)
+    * [.launchAskConf(msg,  successCallback, errorCallback)](#module_Poynt.launchAskConf)
+    * [.launchSign(title, butt, msg,  successCallback, errorCallback)](#module_Poynt.launchSign)
+    * [.launchInit(successCallback, errorCallback)](#module_Poynt.launchInit)
+    * [.launchMsg(msg, successCallback, errorCallback)](#module_Poynt.launchMsg)
+    * [.launchInfo(successCallback, errorCallback)](#module_Poynt.launchInfo)
 
 ---
 
