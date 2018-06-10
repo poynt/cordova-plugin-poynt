@@ -143,7 +143,24 @@ __Supported Platforms__
 ```js
 Poynt.launchSign('Confirm by sign','Signed','by signing you agree...', succcessCallback, failureCallback);
 ```
+<a name="Poynt.launchInit"></a>
+### Poynt.launchInit(successCallback, errorCallback)
+This function initialize services for Business and SecondScreen services. In case of error a string is returned in errorCallback 
 
+__Supported Platforms__
+
+- PoyntOS
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| successCallback |  |  |
+| errorCallback |  |  |
+
+**Example Request**  
+```js
+Poynt.launchInit('succcessCallback, failureCallback);
+```
 
 
 
