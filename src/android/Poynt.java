@@ -139,7 +139,7 @@ public class Poynt extends CordovaPlugin  {
             String referencemsg = arg_object.getString("msg");
             String titlemsg = arg_object.getString("title");
             String leftbutt = arg_object.getString("leftbutton");
-            collectSignature();
+            collectSignature(titlemsg,titlemsg,leftbutt);
         }
         else if (LAUNCH_MSG.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
