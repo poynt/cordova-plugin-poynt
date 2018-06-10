@@ -135,6 +135,10 @@ public class Poynt extends CordovaPlugin  {
             showCollectAgreement(referencemsg);
         }
         else if (LAUNCH_SIGN.equals(action)) {
+            JSONObject arg_object = args.getJSONObject(0);
+            String referencemsg = arg_object.getString("msg");
+            String titlemsg = arg_object.getString("title");
+            String leftbutt = arg_object.getString("leftbutton");
             collectSignature();
         }
         else if (LAUNCH_MSG.equals(action)) {
@@ -258,14 +262,14 @@ public class Poynt extends CordovaPlugin  {
         }
     }
     
-    public void collectSignature() {
+    public void collectSignature(String tit, String msg, String butt) {
         try {
             final CallbackContext cbk=this.callbackContext;
             Bundle options = new Bundle();
-            options.putString(Intents.EXTRA_TITLE, "Firma per Accettazione");
-            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, "Fatto");
-            options.putString(Intents.EXTRA_LEFT_BUTTON_TITLE, "Pulisci");
-            //options.putString(Intents.EXTRA_TEXT_UNDER_LINE, "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
+            options.putString(Intents.EXTRA_TITLE, tit);
+            options.putString(Intents.EXTRA_RIGHT_BUTTON_TITLE, butt);
+             
+            options.putString(Intents.EXTRA_TEXT_UNDER_LINE, msg);
             secondScreenService.captureSignature(null, options, new IPoyntSignatureListener.Stub() {
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
