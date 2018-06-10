@@ -1,11 +1,11 @@
 ---
 title: Poynt
-description: Work with Poynt Payment Fragment, Second Screen Service
+description: Work with Poynt Payment Fragment, SecondScreen Service, Business Service
 ---
 
 # cordova-plugin-poynt2
 
-This plugin defines a global `Poynt` object, which provides an API for working with Poynt Payment Fragment.
+This plugin defines a global `Poynt` object, which provides an API for working with Poynt Payment Fragment, SecondScreen and Business services.
 
 ## Installation
 The plugin was written and tested using with cordova v6.3.0
