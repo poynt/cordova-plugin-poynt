@@ -26,7 +26,7 @@ Please feel free to contribute. You can [report bugs](https://github.com/poynt/c
 
 # API Reference <a name="reference"></a>
 * [Poynt](#module_Poynt)
-    * [.launchPayment(amount, referenceId, successCallback, errorCallback)](#module_Poynt.launchPayment)
+    * [.launchPayment(amount, referenceId, successCallback, errorCallback)](#Poynt.launchPayment)
     * [.launchAskConf(msg,  successCallback, errorCallback)](#module_Poynt.launchAskConf)
     * [.launchSign(title, butt, msg,  successCallback, errorCallback)](#module_Poynt.launchSign)
     * [.launchInit(successCallback, errorCallback)](#module_Poynt.launchInit)
