@@ -20,12 +20,12 @@ var Poynt = {
 			'launchAskConf', 
 			[{"msg": msg}]);
 	},
-	launchSign: function (successCallback, errorCallback){
+	launchSign: function (title,butt,msg,successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
 			'launchSign', 
-			[]);
+			[{"msg": msg,"title":title,"leftbutton":butt}]);
 	},
 	launchInit: function (successCallback, errorCallback){
 		cordova.exec(successCallback, 
