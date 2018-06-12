@@ -99,7 +99,14 @@ public class Poynt extends CordovaPlugin  {
         
         if (LAUNCH_INIT.equals(action))
         {
-            bindService();
+            cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    bindService();
+                    
+                }
+            });
+            
+            
             return true;
         }
         
