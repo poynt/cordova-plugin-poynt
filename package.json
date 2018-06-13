@@ -1,15 +1,15 @@
 {
     "name":"cordova-plugin-poynt2",
     "version":"1.0.2",
-    "description":"Simple plugin to work with Poynt payment fragment",
+    "description":"Plugin to work with Poynt payment fragment, SecondScreen Service, Business Service",
     "keywords":[
         "poynt"
     ],
-    "author":"Alessandro Sbenaglia (alessandro.sbenaglia@visitamiapp.com)",
+    "author":"Alessandro Sbenaglia (alessandro.sbenaglia@visitamiapp.com), Poynt Developer Support <devsupport@poynt.com> (https://poynt.com)",
     "license":"Apache 2",
     "repository": {
         "type": "git",
-        "url": "https://github.com/xale76/cordova-plugin-poynt2.git"
+        "url": "https://github.com/poynt/cordova-plugin-poynt.git"
     },
-    "bugs":"https://github.com/xale76/cordova-plugin-poynt2/issues"
+    "bugs":"https://github.com/poynt/cordova-plugin-poynt/issues"
 }
