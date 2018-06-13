@@ -1,5 +1,5 @@
 {
-    "name":"cordova-plugin-poynt2",
+    "name":"cordova-plugin-poynt",
     "version":"1.0.2",
     "description":"Plugin to work with Poynt payment fragment, SecondScreen Service, Business Service",
     "keywords":[
