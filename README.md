@@ -3,24 +3,24 @@ title: Poynt
 description: Work with Poynt Payment Fragment, SecondScreen Service, Business Service
 ---
 
-# cordova-plugin-poynt2
+# cordova-plugin-poynt
 
 This plugin defines a global `Poynt` object, which provides an API for working with Poynt Payment Fragment, SecondScreen and Business services.
 
 ## Installation
 The plugin was written and tested using with cordova v6.3.0
 
-    cordova plugin add cordova-plugin-poynt2
+    cordova plugin add cordova-plugin-poynt
     
 It is also possible to install via repo url directly
 
-    cordova plugin add https://github.com/xale76/cordova-plugin-poynt2.git
+    cordova plugin add https://github.com/poynt/cordova-plugin-poynt.git
     
 
 
 ## How to Contribute
 
-Please feel free to contribute. You can [report bugs](https://github.com/xale76/cordova-plugin-poynt2/issues), improve the documentation, or [contribute code](https://github.com/xale76/cordova-plugin-poynt2/pulls).
+Please feel free to contribute. You can [report bugs](https://github.com/poynt/cordova-plugin-poynt/issues), improve the documentation, or [contribute code](https://github.com/poynt/cordova-plugin-poynt/pulls).
 
 ---
 
