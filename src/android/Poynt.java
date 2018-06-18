@@ -53,6 +53,12 @@ import co.poynt.os.services.v1.IPoyntBusinessReadListener;
 import co.poynt.os.services.v1.IPoyntBusinessService;
 import static android.content.Context.BIND_AUTO_CREATE;
 /* */
+
+/* ale3 */
+import co.poynt.os.services.v1.IPoyntInAppBillingService;
+import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
+/* */
+
 public class Poynt extends CordovaPlugin  {
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
