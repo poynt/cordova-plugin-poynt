@@ -60,6 +60,7 @@ import co.poynt.os.services.v1.IPoyntInAppBillingService;
 import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
 import android.app.PendingIntent; 
 import android.content.Context;
+import android.content.IntentSender;
 /* */
 
 public class Poynt extends CordovaPlugin  {
@@ -163,7 +164,7 @@ public class Poynt extends CordovaPlugin  {
                                             Integer.valueOf(0),
                                             Integer.valueOf(0));
                                      
-                                } catch (ActivityNotFoundException ex) {
+                                } catch (IntentSender.SendIntentException e) {
                                     this.callbackContext.error("Failed to launch billing fragment!");
                                 }
                             } else {
