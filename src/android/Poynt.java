@@ -152,12 +152,12 @@ public class Poynt extends CordovaPlugin  {
             String referenceId = arg_object.getString("paymentid");
             Bundle bundle = getBillingFragmentIntent(referenceId, false);
             if (bundle != null && bundle.containsKey("BUY_INTENT")) {
-                            PendingIntent intent = bundle.getParcelable("BUY_INTENT");
+                            Intent intent = bundle.getParcelable("BUY_INTENT");
                             if (intent != null) {
                                 try {
                                     this.cordova.startActivityForResult(this, intent, BUY_INTENT_REQUEST_CODE);
                                      
-                                } catch (IntentSender.SendIntentException e) {
+                                } catch (ActivityNotFoundException ex) {
                                     this.callbackContext.error("Failed to launch billing fragment!");
                                 }
                             } else {
