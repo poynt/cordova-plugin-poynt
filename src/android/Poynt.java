@@ -55,10 +55,10 @@ import static android.content.Context.BIND_AUTO_CREATE;
 /* */
 
 /* ale3 */
-/*
+ 
 import co.poynt.os.services.v1.IPoyntInAppBillingService;
 import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
-*/
+import android.app.PendingIntent; 
 /* */
 
 public class Poynt extends CordovaPlugin  {
@@ -69,6 +69,8 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_MSG="launchMsg";
     private static final String LAUNCH_INIT="launchInit";
     private static final String LAUNCH_TEST="launchInfo";
+    
+    private static final String LAUNCH_BILLING="launchBilling";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
@@ -83,7 +85,8 @@ public class Poynt extends CordovaPlugin  {
     public static final int PERMISSION_DENIED_ERROR = 20;
 
     public static final int COLLECT_PAYMENT_REQUEST = 54321;
-
+    public static final int BUY_INTENT_REQUEST_CODE = 98765;
+    
     /**
      * Executes the request and returns PluginResult.
      *
@@ -143,6 +146,26 @@ public class Poynt extends CordovaPlugin  {
                 Log.e(TAG, "Poynt Payment Activity not found - did you install PoyntServices?", ex);
                 this.callbackContext.error(getErrorString());
             }
+        }
+        else if (LAUNCH_BILLING.equals(action)) {
+            JSONObject arg_object = args.getJSONObject(0);
+            String referenceId = arg_object.getString("paymentid");
+            Bundle bundle = getBillingFragmentIntent(referenceId, false);
+            if (bundle != null && bundle.containsKey("BUY_INTENT")) {
+                            PendingIntent intent = bundle.getParcelable("BUY_INTENT");
+                            if (intent != null) {
+                                try {
+                                    this.cordova.startActivityForResult(this, intent, BUY_INTENT_REQUEST_CODE);
+                                     
+                                } catch (IntentSender.SendIntentException e) {
+                                    this.callbackContext.error("Failed to launch billing fragment!");
+                                }
+                            } else {
+                                this.callbackContext.error("Did not receive buy intent!");
+                            }
+                        } else {
+                            this.callbackContext.error("Failed to obtain billing fragment intent!");
+                        }
         }
         else if (LAUNCH_ASKCONF.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
@@ -249,7 +272,7 @@ public class Poynt extends CordovaPlugin  {
                 cbk.success("");
             }
         };
-        /*serviceConnectionB = new ServiceConnection() {
+        serviceConnectionB = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 mBillingService = null;
@@ -262,13 +285,13 @@ public class Poynt extends CordovaPlugin  {
                 mBillingService = IPoyntInAppBillingService.Stub.asInterface(service);
                 cbk.success("");
             }
-        };*/
+        };
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
-        /*
+        
         Intent serviceIntent = new Intent("com.poynt.store.PoyntInAppBillingService.BIND");
         serviceIntent.setPackage("com.poynt.store");
-        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);*/
+        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
         
     }
     
