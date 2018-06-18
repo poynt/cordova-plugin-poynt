@@ -158,7 +158,7 @@ public class Poynt extends CordovaPlugin  {
                             PendingIntent intent = bundle.getParcelable("BUY_INTENT");
                             if (intent != null) {
                                 try {
-                                    this.cordova.startIntentSenderForResult(this, intent, BUY_INTENT_REQUEST_CODE,null,
+                                    cordova.getActivity().startIntentSenderForResult(this, intent, BUY_INTENT_REQUEST_CODE,null,
                                             Integer.valueOf(0),
                                             Integer.valueOf(0),
                                             Integer.valueOf(0));
