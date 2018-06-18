@@ -236,10 +236,10 @@ public class Poynt extends CordovaPlugin  {
     private IPoyntSecondScreenService secondScreenService;
     private ServiceConnection serviceConnection;
     private ServiceConnection serviceConnectionI;
-    /*
+    
     private IPoyntInAppBillingService mBillingService;
     private ServiceConnection serviceConnectionB;
-    */
+     
     public void bindService() {
         //setup service connection
         final CallbackContext cbk=this.callbackContext;
