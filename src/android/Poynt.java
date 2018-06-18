@@ -233,6 +233,13 @@ public class Poynt extends CordovaPlugin  {
 
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, UNKNOWN_ERROR));
         }
+       else if (requestCode == BUY_INTENT_REQUEST_CODE) {
+           if (resultCode == Activity.RESULT_OK) {
+                this.callbackContext.success("Subscription request was successful - run Check Subscription to confirm!");
+            } else if (resultCode == RESULT_CANCELED) {
+                this.callbackContext.error("Subscription request failed!");
+            }
+       }
     }
 
     private String getErrorString(){
