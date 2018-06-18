@@ -20,9 +20,9 @@
 		<config-file target="AndroidManifest.xml" parent="/*">
             		<uses-permission android:name="poynt.permission.SECOND_SCREEN_SERVICE" />
 			<uses-permission android:name="poynt.permission.BUSINESS_SERVICE" />
-			<!--
+			 
 			<uses-permission android:name="com.poynt.store.BILLING" />
-			-->
+			 
         	</config-file>
 		
 	</platform>
