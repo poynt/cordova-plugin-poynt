@@ -236,7 +236,7 @@ public class Poynt extends CordovaPlugin  {
        else if (requestCode == BUY_INTENT_REQUEST_CODE) {
            if (resultCode == Activity.RESULT_OK) {
                 this.callbackContext.success("Subscription request was successful - run Check Subscription to confirm!");
-            } else if (resultCode == RESULT_CANCELED) {
+            } else if (resultCode == Activity.RESULT_CANCELED) {
                 this.callbackContext.error("Subscription request failed!");
             }
        }
