@@ -55,8 +55,10 @@ import static android.content.Context.BIND_AUTO_CREATE;
 /* */
 
 /* ale3 */
+/*
 import co.poynt.os.services.v1.IPoyntInAppBillingService;
 import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
+*/
 /* */
 
 public class Poynt extends CordovaPlugin  {
@@ -209,11 +211,12 @@ public class Poynt extends CordovaPlugin  {
      
     private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
-    private IPoyntInAppBillingService mBillingService;
     private ServiceConnection serviceConnection;
     private ServiceConnection serviceConnectionI;
+    /*
+    private IPoyntInAppBillingService mBillingService;
     private ServiceConnection serviceConnectionB;
-    
+    */
     public void bindService() {
         //setup service connection
         final CallbackContext cbk=this.callbackContext;
@@ -246,7 +249,7 @@ public class Poynt extends CordovaPlugin  {
                 cbk.success("");
             }
         };
-        serviceConnectionB = new ServiceConnection() {
+        /*serviceConnectionB = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 mBillingService = null;
@@ -259,13 +262,13 @@ public class Poynt extends CordovaPlugin  {
                 mBillingService = IPoyntInAppBillingService.Stub.asInterface(service);
                 cbk.success("");
             }
-        };
+        };*/
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
-        
+        /*
         Intent serviceIntent = new Intent("com.poynt.store.PoyntInAppBillingService.BIND");
         serviceIntent.setPackage("com.poynt.store");
-        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
+        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);*/
         
     }
     
