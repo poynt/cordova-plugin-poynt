@@ -190,7 +190,14 @@ public class Poynt extends CordovaPlugin  {
         return true;
     }
 
-
+    private Bundle getBillingFragmentIntent(String planId, boolean replace) throws RemoteException {
+        Bundle bundle = new Bundle();
+        // add plan Id
+        bundle.putString("plan_id", planId);
+        bundle.putBoolean("replace", replace);
+        return mBillingService.getBillingIntent(getPackageName(), bundle);
+    }
+ 
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         if (requestCode == COLLECT_PAYMENT_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
