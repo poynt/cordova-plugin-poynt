@@ -205,7 +205,7 @@ public class Poynt extends CordovaPlugin  {
         Bundle bundle = new Bundle();
         // add plan Id
         bundle.putString("plan_id", planId);
-        bundle.putBoolean("replace", replace)
+        bundle.putBoolean("replace", replace);
         String ida=cordova.getActivity().getPackageName();
         ida="com.visitami.visitamiprenotatore";
 
