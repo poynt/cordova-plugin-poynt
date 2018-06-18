@@ -196,7 +196,7 @@ public class Poynt extends CordovaPlugin  {
         // add plan Id
         bundle.putString("plan_id", planId);
         bundle.putBoolean("replace", replace);
-        return mBillingService.getBillingIntent(getPackageName(), bundle);
+        return mBillingService.getBillingIntent(cordova.getActivity().getPackageName(), bundle);
     }
  
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
