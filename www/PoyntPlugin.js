@@ -13,6 +13,15 @@ var Poynt = {
 				"referenceId": referenceId
 			}]);
 	},
+	launchBilling: function (paymentid, successCallback, errorCallback){
+		cordova.exec(successCallback, 
+			errorCallback, 
+			'Poynt', 
+			'launchBilling', 
+			[{
+				"paymentid": paymentid
+			}]);
+	},
 	launchAskConf: function (msg,successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
