@@ -59,6 +59,7 @@ import static android.content.Context.BIND_AUTO_CREATE;
 import co.poynt.os.services.v1.IPoyntInAppBillingService;
 import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
 import android.app.PendingIntent; 
+import android.content.Context;
 /* */
 
 public class Poynt extends CordovaPlugin  {
