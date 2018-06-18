@@ -246,8 +246,27 @@ public class Poynt extends CordovaPlugin  {
                 cbk.success("");
             }
         };
+        serviceConnectionB = new ServiceConnection() {
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mBillingService = null;
+                cbk.error("Error Binding BillingService");
+                }
+
+            @Override
+            public void onServiceConnected(ComponentName name,
+                    IBinder service) {
+                mBillingService = IPoyntInAppBillingService.Stub.asInterface(service);
+                cbk.success("");
+            }
+        };
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
+        
+        Intent serviceIntent = new Intent("com.poynt.store.PoyntInAppBillingService.BIND");
+        serviceIntent.setPackage("com.poynt.store");
+        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
+        
     }
     
      
