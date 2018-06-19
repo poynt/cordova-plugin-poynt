@@ -73,6 +73,7 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_TEST="launchInfo";
     
     private static final String LAUNCH_BILLING="launchBilling";
+    private static final String LAUNCH_PLANS="launchPlans";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
@@ -179,6 +180,9 @@ public class Poynt extends CordovaPlugin  {
               this.callbackContext.error("General Error in Billing!");
             }
         }
+        else if (LAUNCH_PLANS.equals(action)) {
+           getPlans();
+        }
         else if (LAUNCH_ASKCONF.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
             String referencemsg = arg_object.getString("msg");
@@ -212,7 +216,53 @@ public class Poynt extends CordovaPlugin  {
 
         return mBillingService.getBillingIntent(ida, bundle);
     }
- 
+    
+    private void getPlans() {
+	    final CallbackContext cbk=this.callbackContext;
+        try {
+            if (mBillingService != null) {
+                
+                String requestId = UUID.randomUUID().toString();
+                mBillingService.getPlans("com.visitami.visitamiprenotatore", requestId,
+                        new IPoyntInAppBillingServiceListener.Stub() {
+                            @Override
+                            public void onResponse(final String resultJson, final PoyntError poyntError, String requestId)
+                                    throws RemoteException {
+									if (poyntError != null) {
+										cbk.error( poyntError.toString());
+									}
+                                    runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (poyntError != null) {
+                                            cbk.error("Failed to obtain plans: "
+                                                    + poyntError.toString());
+                                        } else {
+                                            /*JsonParser parser = new JsonParser();
+                                            JsonObject json = parser.parse(resultJson).getAsJsonObject();
+                                            JsonArray plans = json.getAsJsonArray("list");
+                                            if (plans.size() > 0){
+                                                setStatus(status, "PLANS RECEIVED");
+                                            }
+                                            logReceivedMessage("Result for get plans: "
+                                                    + toPrettyFormat(resultJson));*/
+											                                 cbk.success(resultJson);		
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+            } else {
+                cbk.error(  "Not connected to InAppBillingService!");
+            }
+        } catch (SecurityException e) {
+            cbk.error(e.getMessage());
+        } catch (RemoteException e) {
+            cbk.error("Remote Error");
+        }
+    }
+
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         if (requestCode == COLLECT_PAYMENT_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
