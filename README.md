@@ -1,6 +1,6 @@
 ---
 title: Poynt
-description: Work with Poynt Payment Fragment, SecondScreen Service, Business Service
+description: Work with Poynt Payment Fragment, SecondScreen Service, Business Service, Billing Service
 ---
 
 # cordova-plugin-poynt
