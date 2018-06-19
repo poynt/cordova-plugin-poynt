@@ -61,6 +61,7 @@ import co.poynt.os.services.v1.IPoyntInAppBillingServiceListener;
 import android.app.PendingIntent; 
 import android.content.Context;
 import android.content.IntentSender;
+import java.util.UUID;
 /* */
 
 public class Poynt extends CordovaPlugin  {
