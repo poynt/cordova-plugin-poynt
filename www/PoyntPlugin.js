@@ -19,6 +19,13 @@ var Poynt = {
 	
 	
 	billing: {
+		Init: function (successCallback, errorCallback){
+		cordova.exec(successCallback, 
+			errorCallback, 
+			'Poynt', 
+			'launchInitB', 
+			[]);
+		},
 		launchBilling: function (successCallback, errorCallback,options){
 			cordova.exec(successCallback, 
 				errorCallback, 
