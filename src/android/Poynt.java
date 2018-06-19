@@ -181,12 +181,10 @@ public class Poynt extends CordovaPlugin  {
               this.callbackContext.error("General Error in Billing!");
             }
         }
-        else if (LAUNCH_PLANS.equals(action)) {
-	    String ida=cordova.getActivity().getPackageName();
-	    this.callbackContext.error(ida);	
+        else if (LAUNCH_PLANS.equals(action)) {	    
 	    cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                    //getPlans();
+                    getPlans();
                 }
             }); 
         }
@@ -228,9 +226,9 @@ public class Poynt extends CordovaPlugin  {
 	    final CallbackContext cbk=this.callbackContext;
         try {
             if (mBillingService != null) {
-                
+                String ida=cordova.getActivity().getPackageName();
                 String requestId = UUID.randomUUID().toString();
-                mBillingService.getPlans("com.visitami.visitamiprenotatore", requestId,
+                mBillingService.getPlans(ida, requestId,
                         new IPoyntInAppBillingServiceListener.Stub() {
                             @Override
                             public void onResponse(final String resultJson, final PoyntError poyntError, String requestId)
