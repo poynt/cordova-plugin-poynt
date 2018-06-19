@@ -73,6 +73,7 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_INIT="launchInit";
     private static final String LAUNCH_TEST="launchInfo";
     
+    private static final String LAUNCH_INITB="launchInitB";
     private static final String LAUNCH_BILLING="launchBilling";
     private static final String LAUNCH_PLANS="launchPlans";
     
@@ -124,7 +125,18 @@ public class Poynt extends CordovaPlugin  {
             //bindService();
             return true;
         }
-        
+        if (LAUNCH_INITB.equals(action))
+        {
+           cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    bindServiceBilling();
+                    
+                }
+            }); 
+            
+            //bindService();
+            return true;
+        }
        
          
         if (LAUNCH_PAYMENT.equals(action)) {
@@ -320,7 +332,36 @@ public class Poynt extends CordovaPlugin  {
     
     private IPoyntInAppBillingService mBillingService;
     private ServiceConnection serviceConnectionB;
-     
+    
+    public void bindServiceBilling()
+    {
+       final CallbackContext cbk=this.callbackContext;
+       if (mBillingService!=null)
+         {
+	       cbk.success("");
+	       return;
+         }
+	    
+       serviceConnectionB = new ServiceConnection() {
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                mBillingService = null;
+                cbk.error("Error Binding BillingService");
+                }
+
+            @Override
+            public void onServiceConnected(ComponentName name,
+                    IBinder service) {
+                mBillingService = IPoyntInAppBillingService.Stub.asInterface(service);
+                cbk.success("");
+            }
+        };
+	
+	Intent serviceIntent = new Intent("com.poynt.store.PoyntInAppBillingService.BIND");
+        serviceIntent.setPackage("com.poynt.store");
+        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
+    }	    
+	    
     public void bindService() {
         //setup service connection
         final CallbackContext cbk=this.callbackContext;
