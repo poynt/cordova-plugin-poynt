@@ -26,12 +26,12 @@ Please feel free to contribute. You can [report bugs](https://github.com/poynt/c
 
 # API Reference <a name="reference"></a>
 * [Poynt](#module_Poynt)
-    * [.launchPayment(amount, referenceId, successCallback, errorCallback)](#Poynt.launchPayment)
-    * [.launchAskConf(msg,  successCallback, errorCallback)](#Poynt.launchAskConf)
-    * [.launchSign(title, butt, msg,  successCallback, errorCallback)](#Poynt.launchSign)
     * [.launchInit(successCallback, errorCallback)](#Poynt.launchInit)
-    * [.launchMsg(msg, successCallback, errorCallback)](#Poynt.launchMsg)
-    * [.launchInfo(successCallback, errorCallback)](#Poynt.launchInfo)
+    * [.launchPayment(amount, referenceId, successCallback, errorCallback)](#Poynt.launchPayment)
+    * [.secondScreen.collectAgreement(successCallback, errorCallback,options)](#Poynt.launchAskConf)
+    * [.secondScreen.collectSignature(successCallback, errorCallback,options)](#Poynt.launchSign)
+    * [.secondScreen.displayMessage(successCallback, errorCallback,options)](#Poynt.launchMsg)
+    * [.business.getBusiness(successCallback, errorCallback)](#Poynt.launchInfo)
 
 ---
 
@@ -103,7 +103,7 @@ Poynt.launchPayment(777, 'myRefId', succcessCallback, failureCallback);
 }
 ```
 <a name="Poynt.launchAskConf"></a>
-### Poynt.launchAskConf(msg,  successCallback, errorCallback)
+### Poynt.secondScreen.collectAgreement(successCallback, errorCallback,options)
 Launches secondScreenService->captureAgreement passing msg as URL. "YES" or "NOT" strings are passed back in callback. In case of error, errorCallback is called with error string in argument
 
 __Supported Platforms__
@@ -113,17 +113,17 @@ __Supported Platforms__
 
 | Param | Type | Description |
 | --- | --- | --- |
-| msg | string | URL for text/HTML |
 | successCallback |  |  |
 | errorCallback |  |  |
+| options | JSON | parameters: msg |
 
 **Example Request**  
 ```js
-Poynt.launchAskConf('http://example.com/privacy.html', succcessCallback, failureCallback);
+Poynt.secondScreen.collectAgreement( succcessCallback, failureCallback,{"msg":'http://example.com/privacy.html');
 ```
 
 <a name="Poynt.launchSign"></a>
-### Poynt.launchSign(title, butt, msg, successCallback, errorCallback)
+### Poynt.secondScreen.collectSignature(successCallback, errorCallback,options)
 Launches secondScreenService->captureSignature passing title, button name (only for Accept behaviour) and message. In case of success the function returns a base64 string that represents the bitmap bytestream of the signature as argument in successCallback. In case of error an error string in errorCallback. 
 
 __Supported Platforms__
@@ -133,18 +133,16 @@ __Supported Platforms__
 
 | Param | Type | Description |
 | --- | --- | --- |
-| title | string | title of the actvity |
-| butt | string | text for Accept button |
-| msg | string | string for text unde sign region |
 | successCallback |  |  |
 | errorCallback |  |  |
+| options | JSON | parameters: title,leftbutton,msg |
 
 **Example Request**  
 ```js
-Poynt.launchSign('Confirm by sign','Signed','by signing you agree...', succcessCallback, failureCallback);
+Poynt.launchSign(succcessCallback, failureCallback,{"title":'Confirm by sign',"leftbutton":'Signed',"msg":'by signing you agree...'});
 ```
 <a name="Poynt.launchInit"></a>
-### Poynt.launchInit(successCallback, errorCallback)
+### Poynt.Init(successCallback, errorCallback)
 This function initialize services for Business and SecondScreen services. In case of error a string is returned in errorCallback 
 
 __Supported Platforms__
@@ -159,11 +157,11 @@ __Supported Platforms__
 
 **Example Request**  
 ```js
-Poynt.launchInit(succcessCallback, failureCallback);
+Poynt.Init(succcessCallback, failureCallback);
 ```
 
 <a name="Poynt.launchMsg"></a>
-### Poynt.launchMsg(msg,successCallback, errorCallback)
+### Poynt.secondScreen.displayMessage(successCallback, errorCallback,options)
 Launches secondScreenService->displayMessage passing the msg as parameter.
 
 __Supported Platforms__
@@ -175,13 +173,14 @@ __Supported Platforms__
 | --- | --- | --- |
 | successCallback |  |  |
 | errorCallback |  |  |
+| options | JSON | parameters: msg |
 
 **Example Request**  
 ```js
-Poynt.launchMsg('a message in second screen',succcessCallback, failureCallback);
+Poynt.secondScreen.displayMessage(succcessCallback, failureCallback,{"msg":'a message in second screen'});
 ```
 <a name="Poynt.launchInfo"></a>
-### Poynt.launchInfo(successCallback, errorCallback)
+### Poynt.business.getBusiness(successCallback, errorCallback)
 Launches businessService->getBusiness. The response is passed to the success callback as a JSON object. In case of error a string is passed in errorCallback
 
 __Supported Platforms__
@@ -196,7 +195,7 @@ __Supported Platforms__
 
 **Example Request**  
 ```js
-Poynt.launchInfo(succcessCallback, failureCallback);
+Poynt.business.getBusiness(succcessCallback, failureCallback);
 ```
 
 **Example Response**
