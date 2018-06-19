@@ -322,19 +322,6 @@ public class Poynt extends CordovaPlugin  {
         cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
         
     }
-    
-     
-      
-   private void showConfirmation(String message) {
-        try {
-            Bundle options = new Bundle();
-            options.putString("FONT_COLOR", "#f07f22");
-            options.putString(Intents.EXTRA_CONTENT_TYPE, Intents.EXTRA_CONTENT_TYPE_HTML);
-            secondScreenService.displayMessage(message, options);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
  
     public void showWelcome(String message) {
         try {
@@ -361,7 +348,7 @@ public class Poynt extends CordovaPlugin  {
             secondScreenService.captureSignature(null, options, new IPoyntSignatureListener.Stub() {
                 @Override
                 public void onSignatureEntered(Bitmap bitmap) throws RemoteException {
-                    showConfirmation("Grazie!");
+                     
                     if (bitmap != null){
                       ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
                       bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
