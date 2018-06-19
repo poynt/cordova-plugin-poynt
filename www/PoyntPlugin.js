@@ -1,7 +1,3 @@
-
-
-
-
 var Poynt = {
 	launchPayment: function (amount, referenceId, successCallback, errorCallback){
 		cordova.exec(successCallback, 
@@ -12,51 +8,58 @@ var Poynt = {
 				"amount": amount, 
 				"referenceId": referenceId
 			}]);
-	},
-	launchBilling: function (paymentid, successCallback, errorCallback){
-		cordova.exec(successCallback, 
-			errorCallback, 
-			'Poynt', 
-			'launchBilling', 
-			[{
-				"paymentid": paymentid
-			}]);
-	},
-	launchAskConf: function (msg,successCallback, errorCallback){
-		cordova.exec(successCallback, 
-			errorCallback, 
-			'Poynt', 
-			'launchAskConf', 
-			[{"msg": msg}]);
-	},
-	launchSign: function (title,butt,msg,successCallback, errorCallback){
-		cordova.exec(successCallback, 
-			errorCallback, 
-			'Poynt', 
-			'launchSign', 
-			[{"msg": msg,"title":title,"leftbutton":butt}]);
-	},
-	launchInit: function (successCallback, errorCallback){
+	},	
+	Init: function (successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
 			'launchInit', 
 			[]);
 	},
-	launchMsg: function (msg,successCallback, errorCallback){
-		cordova.exec(successCallback, 
-			errorCallback, 
-			'Poynt', 
-			'launchMsg', 
-			[{"msg": msg}]);
+	
+	
+	billing: {
+		launchBilling: function (successCallback, errorCallback,options){
+			cordova.exec(successCallback, 
+				errorCallback, 
+				'Poynt', 
+				'launchBilling', 
+				[options]);
+		}
 	},
-	launchInfo: function (successCallback, errorCallback){
+	business: {
+		getBusiness: function (successCallback, errorCallback){
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
 			'launchInfo', 
 			[]);
+		}
+	},
+	secondScreen: {
+			collectAgreement: function (successCallback, errorCallback,options){
+				cordova.exec(successCallback, 
+				errorCallback, 
+				'Poynt', 
+				'launchAskConf', 
+				[options]);
+			},
+			displayMessage: function (successCallback, errorCallback,options){
+				cordova.exec(successCallback, 
+					errorCallback, 
+					'Poynt', 
+					'launchMsg', 
+					[options]);
+			},
+			collectSignature: function (successCallback, errorCallback,options){
+			cordova.exec(successCallback, 
+				errorCallback, 
+				'Poynt', 
+				'launchSign', 
+				[options]);
+			}
 	}
 }
 
  module.exports = Poynt;
+ 
