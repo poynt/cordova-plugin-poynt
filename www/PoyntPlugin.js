@@ -25,6 +25,13 @@ var Poynt = {
 				'Poynt', 
 				'launchBilling', 
 				[options]);
+		},
+		getPlans: function (successCallback,errorCallback,options){
+			cordova.exec(successCallback, 
+				errorCallback, 
+				'Poynt', 
+				'launchPlans', 
+				[options]);
 		}
 	},
 	business: {
