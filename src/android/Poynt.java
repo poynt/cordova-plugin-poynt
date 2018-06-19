@@ -231,14 +231,9 @@ public class Poynt extends CordovaPlugin  {
 									if (poyntError != null) {
 										cbk.error( poyntError.toString());
 									}
-                                    runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (poyntError != null) {
-                                            cbk.error("Failed to obtain plans: "
-                                                    + poyntError.toString());
-                                        } else {
-                                            /*JsonParser parser = new JsonParser();
+									else
+									{
+										/*JsonParser parser = new JsonParser();
                                             JsonObject json = parser.parse(resultJson).getAsJsonObject();
                                             JsonArray plans = json.getAsJsonArray("list");
                                             if (plans.size() > 0){
@@ -246,10 +241,9 @@ public class Poynt extends CordovaPlugin  {
                                             }
                                             logReceivedMessage("Result for get plans: "
                                                     + toPrettyFormat(resultJson));*/
-											                                 cbk.success(resultJson);		
-                                        }
-                                    }
-                                });
+										cbk.success(resultJson);	
+									}
+                                     
                             }
                         });
 
