@@ -196,7 +196,7 @@ public class Poynt extends CordovaPlugin  {
             showWelcome(referencemsg);
         }
         else if (LAUNCH_TEST.equals(action)) {
-           showInfo(); 
+           getBusiness(); 
         }
         return true;
     }
@@ -406,25 +406,17 @@ public class Poynt extends CordovaPlugin  {
     /* ALE */
     
     /* ALE2 */
-    
-    
-     public String InfoStr(Business business)
-     {
-      return "{\"name\": \"" + business.getLegalName().replace("\"","") + "\"," +
-               "\"email\": \"" + business.getEmailAddress().replace("\"","") + "\"," +
-               "\"phone\": \"" + business.getPhone().getLocalPhoneNumber().replace("\"","") + "\","+
-               "\"mcc\": \"" + business.getMcc() +"\"}"; 
-     }
-    
-     public void showInfo() {
+     public void getBusiness() {
         
             final CallbackContext cbk=this.callbackContext;
             IPoyntBusinessReadListener bizListener = new IPoyntBusinessReadListener.Stub() {
             @Override
             public void onResponse(Business business, PoyntError poyntError) throws RemoteException {
                         if (business != null){
-                             String businessName =InfoStr(business); //business.getLegalName();
-                             cbk.success(businessName);
+                             Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                             Type businessType = new TypeToken<Business>(){}.getType();
+                             String businessS = gson.toJson(business, businessType);
+                             cbk.success(businessS);
                         }
                         else
                         {
