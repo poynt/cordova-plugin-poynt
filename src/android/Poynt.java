@@ -182,11 +182,11 @@ public class Poynt extends CordovaPlugin  {
             }
         }
         else if (LAUNCH_PLANS.equals(action)) {
+	    String ida=cordova.getActivity().getPackageName();
+	    this.callbackContext.error(ida);	
 	    cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     //getPlans();
-                    String ida=cordova.getActivity().getPackageName();
-		    this.callbackContext.error(ida);	
                 }
             }); 
         }
