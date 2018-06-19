@@ -182,7 +182,12 @@ public class Poynt extends CordovaPlugin  {
             }
         }
         else if (LAUNCH_PLANS.equals(action)) {
-           getPlans();
+	    cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    getPlans();
+                    
+                }
+            }); 
         }
         else if (LAUNCH_ASKCONF.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
