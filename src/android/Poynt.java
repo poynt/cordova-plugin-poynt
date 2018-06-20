@@ -237,6 +237,46 @@ public class Poynt extends CordovaPlugin  {
         return mBillingService.getBillingIntent(ida, bundle);
     }
     
+    private void checkSubscriptionStatus() {
+        final CallbackContext cbk=this.callbackContext;
+	try {
+            if (mBillingService != null) {
+                String ida=cordova.getActivity().getPackageName();
+				String requestId = UUID.randomUUID().toString();
+                mBillingService.getSubscriptions(ida, requestId,
+                        new IPoyntInAppBillingServiceListener.Stub() {
+                            @Override
+                            public void onResponse(final String resultJson, final PoyntError poyntError, String requestId)
+                                    throws RemoteException {
+									if (poyntError != null) {
+										Log.d(TAG, "poyntError: " + poyntError.toString());
+									}
+                                    else
+									{
+										/*JsonParser parser = new JsonParser();
+                                            JsonObject json = parser.parse(resultJson).getAsJsonObject();
+                                            JsonArray plans = json.getAsJsonArray("list");
+                                            if (plans.size() > 0){
+                                                setStatus(status, "PLANS RECEIVED");
+                                            }
+                                            logReceivedMessage("Result for get plans: "
+                                                    + toPrettyFormat(resultJson));*/
+										cbk.success(resultJson);	
+									}
+                            }
+                        });
+
+            } else {
+                 cbk.error(  "Not connected to InAppBillingService!");
+            }
+        } catch (SecurityException e) {
+            cbk.error(e.getMessage());
+        } catch (RemoteException e) {
+            cbk.error("Remote Error");
+        }
+    }
+
+	
     private void getPlans() {
 	    final CallbackContext cbk=this.callbackContext;
         try {
