@@ -167,10 +167,11 @@ public class Poynt extends CordovaPlugin  {
         else if (LAUNCH_BILLING.equals(action)) {
             JSONObject arg_object = args.getJSONObject(0);
             String referenceId = arg_object.getString("planid");
+            Boolean isreplace = arg_object.getString("replace");
             
             try
             {
-            Bundle bundle = getBillingFragmentIntent(referenceId, false);
+            Bundle bundle = getBillingFragmentIntent(referenceId, isreplace);
             if (bundle != null && bundle.containsKey("BUY_INTENT")) {
                             PendingIntent intent = bundle.getParcelable("BUY_INTENT");
                             if (intent != null) {
