@@ -76,6 +76,7 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_INITB="launchInitB";
     private static final String LAUNCH_BILLING="launchBilling";
     private static final String LAUNCH_PLANS="launchPlans";
+    private static final String LAUNCH_SUBSCR="launchSubscr";
     
     private CallbackContext callbackContext;        // The callback context from which we were invoked.
     private JSONArray executeArgs;
@@ -197,6 +198,16 @@ public class Poynt extends CordovaPlugin  {
              cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                    getPlans();
+                    
+                }
+             }); 
+             return true;
+		
+        }
+	else if (LAUNCH_SUBSCR.equals(action)) {	    
+             cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                   checkSubscriptionStatus();
                     
                 }
              }); 
