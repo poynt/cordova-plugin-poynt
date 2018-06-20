@@ -40,7 +40,7 @@ var Poynt = {
 				'launchPlans', 
 				[options]);
 		},
-		getSubscription: function (successCallback,errorCallback,options){
+		checkSubscription: function (successCallback,errorCallback,options){
 			cordova.exec(successCallback, 
 				errorCallback, 
 				'Poynt', 
