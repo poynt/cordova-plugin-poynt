@@ -44,7 +44,7 @@ var Poynt = {
 			cordova.exec(successCallback, 
 				errorCallback, 
 				'Poynt', 
-				'launchPlans', 
+				'launchSubscr', 
 				[options]);
 		}
 	},
@@ -53,7 +53,7 @@ var Poynt = {
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
-			'launchSubscr', 
+			'launchInfo', 
 			[]);
 		}
 	},
