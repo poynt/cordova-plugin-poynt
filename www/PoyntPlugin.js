@@ -39,6 +39,13 @@ var Poynt = {
 				'Poynt', 
 				'launchPlans', 
 				[options]);
+		},
+		getSubscription: function (successCallback,errorCallback,options){
+			cordova.exec(successCallback, 
+				errorCallback, 
+				'Poynt', 
+				'launchPlans', 
+				[options]);
 		}
 	},
 	business: {
@@ -46,7 +53,7 @@ var Poynt = {
 		cordova.exec(successCallback, 
 			errorCallback, 
 			'Poynt', 
-			'launchInfo', 
+			'launchSubscr', 
 			[]);
 		}
 	},
