@@ -64,7 +64,7 @@ import android.content.IntentSender;
 import java.util.UUID;
 /* */
 
-import co.poynt.os.services.v1.IPoyntSecondScreenService;
+
 
 public class Poynt extends CordovaPlugin  {
     private static final String TAG = "Poynt";
@@ -381,9 +381,12 @@ public class Poynt extends CordovaPlugin  {
      
     private IPoyntBusinessService businessService;
     private IPoyntSecondScreenService secondScreenService;
+    private co.poynt.os.services.v1.IPoyntSecondScreenService secondScreenServiceV1;
+
     private ServiceConnection serviceConnection;
     private ServiceConnection serviceConnectionI;
-    
+    private ServiceConnection serviceConnectionV1;    	
+	
     private IPoyntInAppBillingService mBillingService;
     private ServiceConnection serviceConnectionB;
     
@@ -448,22 +451,26 @@ public class Poynt extends CordovaPlugin  {
                 cbk.success("");
             }
         };
-        serviceConnectionB = new ServiceConnection() {
+        
+	serviceConnectionV1 = new ServiceConnection() {
             @Override
             public void onServiceDisconnected(ComponentName name) {
-                mBillingService = null;
-                cbk.error("Error Binding BillingService");
+                secondScreenServiceV1=null;
+                cbk.error("Error Binding SecondScreen");
                 }
 
             @Override
             public void onServiceConnected(ComponentName name,
                     IBinder service) {
-                mBillingService = IPoyntInAppBillingService.Stub.asInterface(service);
+                secondScreenServiceV1 = co.poynt.os.services.v1.IPoyntSecondScreenService.Stub.asInterface(service);
                 cbk.success("");
             }
         };
+	    
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
+   	cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE),serviceConnectionV1, BIND_AUTO_CREATE);
+   
     }
  
     public void showWelcome(String message) {
