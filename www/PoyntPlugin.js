@@ -78,6 +78,13 @@ var Poynt = {
 				'Poynt', 
 				'launchSign', 
 				[options]);
+			},
+			displayHome: function (successCallback, errorCallback,options){
+				cordova.exec(successCallback, 
+					errorCallback, 
+					'Poynt', 
+					'launchHome', 
+					[options]);
 			}
 	}
 }
