@@ -64,6 +64,8 @@ import android.content.IntentSender;
 import java.util.UUID;
 /* */
 
+import co.poynt.os.services.v1.IPoyntSecondScreenService;
+
 public class Poynt extends CordovaPlugin  {
     private static final String TAG = "Poynt";
     private static final String LAUNCH_PAYMENT="launchPayment";
@@ -462,11 +464,6 @@ public class Poynt extends CordovaPlugin  {
         };
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_SECOND_SCREEN_SERVICE_V2),serviceConnection, BIND_AUTO_CREATE);
         cordova.getActivity().bindService(Intents.getComponentIntent(Intents.COMPONENT_POYNT_BUSINESS_SERVICE),serviceConnectionI, BIND_AUTO_CREATE);
-        
-        Intent serviceIntent = new Intent("com.poynt.store.PoyntInAppBillingService.BIND");
-        serviceIntent.setPackage("com.poynt.store");
-        cordova.getActivity().bindService(serviceIntent,serviceConnectionB, BIND_AUTO_CREATE);
-        
     }
  
     public void showWelcome(String message) {
