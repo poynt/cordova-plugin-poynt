@@ -74,7 +74,8 @@ public class Poynt extends CordovaPlugin  {
     private static final String LAUNCH_MSG="launchMsg";
     private static final String LAUNCH_INIT="launchInit";
     private static final String LAUNCH_TEST="launchInfo";
-    
+    private static final String LAUNCH_HOME="launchHome";
+	
     private static final String LAUNCH_INITB="launchInitB";
     private static final String LAUNCH_BILLING="launchBilling";
     private static final String LAUNCH_PLANS="launchPlans";
@@ -233,6 +234,9 @@ public class Poynt extends CordovaPlugin  {
             JSONObject arg_object = args.getJSONObject(0);
             String referencemsg = arg_object.getString("msg");
             showWelcome(referencemsg);
+        }
+	else if (LAUNCH_HOME.equals(action)) {
+           showWelcomeHome();
         }
         else if (LAUNCH_TEST.equals(action)) {
            getBusiness(); 
@@ -486,7 +490,16 @@ public class Poynt extends CordovaPlugin  {
             e.printStackTrace();
         }
     }
-    
+   
+    public void showWelcomeHome()
+    { 
+      try {
+       secondScreenServiceV1.displayWelcome(null, null, null);
+      } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+	
     public void collectSignature(String tit, String msg, String butt) {
         try {
             final CallbackContext cbk=this.callbackContext;
