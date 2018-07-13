@@ -20,8 +20,7 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        
     }
     buildTypes {
         release {
@@ -35,7 +34,7 @@ android {
 
 dependencies {
     // Poynt SDK and Model Dependencies
-    compile 'co.poynt.api:android-api-model:1.2.44@jar'
-    compile 'co.poynt.android.sdk:poynt-sdk:1.2.11@aar'
-    compile 'com.google.code.gson:gson:2.5'
+    compile 'co.poynt.api:android-api-model:1.2.111-SNAPSHOT@jar'
+    compile 'co.poynt.android.sdk:poynt-sdk:1.2.29-SNAPSHOT@aar'
+    compile 'com.google.code.gson:gson:2.8.0'
 }
