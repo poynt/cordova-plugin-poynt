@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	id="cordova-plugin-poynt" version="0.0.1">
+	id="cordova-plugin-poynt" version="0.0.2">
 	<name>Poynt</name>
 	<description>PoyntOS plugin</description>
 	<license>Apache 2.0</license>
@@ -17,5 +17,13 @@
 		</config-file>
 		<source-file src="src/android/Poynt.java" target-dir="src/co/poynt/cordova/plugin" />
 		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+		<config-file target="AndroidManifest.xml" parent="/*">
+            		<uses-permission android:name="poynt.permission.SECOND_SCREEN_SERVICE" />
+			<uses-permission android:name="poynt.permission.BUSINESS_SERVICE" />
+			 
+			<uses-permission android:name="com.poynt.store.BILLING" />
+			 
+        	</config-file>
+		
 	</platform>
 </plugin>
